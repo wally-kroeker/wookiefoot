@@ -1,0 +1,100 @@
+name: Lyrics Addition
+description: Add or update song lyrics
+title: "[Lyrics]: "
+labels: ["content", "lyrics"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing lyrics to the WookieFoot fan website!
+        Please ensure the lyrics are accurate and properly formatted.
+        
+  - type: dropdown
+    id: album
+    attributes:
+      label: Album
+      description: Which album is this song from?
+      options:
+        - "You're It!"
+        - "Activate"
+        - "Be Fearless and Play"
+        - "Make Belief"
+        - "Domesticated"
+        - "Out of the Jar"
+        - "Ready or Not..."
+        - "Writing on the Wall"
+    validations:
+      required: true
+
+  - type: input
+    id: song_title
+    attributes:
+      label: Song Title
+      description: The exact title of the song
+      placeholder: "e.g., Think You're Free"
+    validations:
+      required: true
+
+  - type: input
+    id: track_number
+    attributes:
+      label: Track Number
+      description: The track number on the album
+      placeholder: "e.g., 5"
+    validations:
+      required: true
+
+  - type: input
+    id: year
+    attributes:
+      label: Release Year
+      description: The year the song was released
+      placeholder: "e.g., 2005"
+    validations:
+      required: true
+
+  - type: textarea
+    id: lyrics
+    attributes:
+      label: Lyrics
+      description: The complete lyrics of the song
+      placeholder: |
+        Verse 1:
+        [Enter lyrics here]
+
+        Chorus:
+        [Enter lyrics here]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: Lyrics Source
+      description: Where did you source these lyrics from?
+      options:
+        - Official Album Booklet
+        - Band Website
+        - Personal Transcription
+        - Other (specify in additional info)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Any additional context about these lyrics (variations, notes, etc.)
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Submission Checklist
+      description: Please confirm the following
+      options:
+        - label: I have verified these lyrics for accuracy
+          required: true
+        - label: I have formatted the lyrics according to the project guidelines
+          required: true
+        - label: I understand these lyrics will be validated before being added
+          required: true

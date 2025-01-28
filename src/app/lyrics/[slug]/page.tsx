@@ -1,4 +1,5 @@
-import { getSongBySlug, getAllSongs, getAdjacentSongs, getSongUrl } from '@/lib/utils/markdown';
+import { getSongBySlug, getAllSongs, getNavigationData, getSongUrl } from '@/lib/utils/markdown';
+import AlbumNavigation from '@/components/navigation/AlbumNavigation';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -42,7 +43,7 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const { previous, next } = await getAdjacentSongs(song);
+  const { previous, next, albumSongs, currentIndex } = await getNavigationData(song);
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -150,7 +151,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div>
 
-      <div className="prose prose-lg max-w-none">
+      <div className="prose prose-lg max-w-none mb-20 md:mb-8">
         <div
           dangerouslySetInnerHTML={{ __html: song.lyrics || '' }}
           className="whitespace-pre-wrap"
@@ -188,7 +189,9 @@ export default async function Page({ params }: PageProps) {
         </div>
       )}
 
-      <div className="pt-8 border-t border-gray-200">
+      <AlbumNavigation songs={albumSongs} currentIndex={currentIndex} />
+
+      <div className="pt-8 border-t border-gray-200 mb-20 md:mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Discussion</h2>
         <p className="text-gray-600">
           Discussion feature coming soon! Share your thoughts and interpretations

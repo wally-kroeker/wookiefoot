@@ -2,12 +2,17 @@ import { ProcessedSong, Song, Track, Album } from '@/types/index.js';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import fs from 'fs/promises';
-import path from 'path';
-import { parse } from 'csv-parse/sync';
+import { visit } from 'unist-util-visit';
 
-// Add status to Track and Song interfaces since we're using it
 type LyricsStatus = 'Yes' | 'Failed' | 'Skipped';
+
+interface SongIndexEntry {
+  Album: string;
+  Year: string;
+  'Song Title': string;
+  'Track Number': string;
+  'Has Lyrics': LyricsStatus;
+}
 
 interface SongMetadata {
   title: string;
@@ -23,31 +28,24 @@ interface SongMetadata {
   syncedLyrics?: string;
 }
 
-interface SongIndexEntry {
-  album: string;
-  year: string;
-  songTitle: string;
-  trackNumber: number;
-  hasLyrics: LyricsStatus;
+// Function to get base URL for API calls
+function getBaseUrl(): string {
+  if (typeof window !== 'undefined') {
+    // Browser should use relative path
+    return '';
+  }
+  // Server should use full URL
+  return process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000';
 }
 
-// Function to read and parse song_index.csv
+// Function to fetch song index from API
 async function getSongIndex(): Promise<SongIndexEntry[]> {
-  const csvPath = path.join(process.cwd(), 'song_index.csv');
-  const csvContent = await fs.readFile(csvPath, 'utf-8');
-  
-  const records = parse(csvContent, {
-    columns: true,
-    skip_empty_lines: true
-  });
-
-  return records.map((record: any) => ({
-    album: record.Album,
-    year: record.Year,
-    songTitle: record['Song Title'],
-    trackNumber: parseInt(record['Track Number'], 10),
-    hasLyrics: record['Has Lyrics'] as LyricsStatus
-  }));
+  const baseUrl = getBaseUrl();
+  const response = await fetch(`${baseUrl}/api/lyrics`);
+  const data = await response.json();
+  return data.songs;
 }
 
 // Function to convert song title to slug
@@ -70,9 +68,21 @@ function albumToDirectoryName(album: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-// Function to get the content directory path
-function getContentPath(): string {
-  return path.join(process.cwd(), 'src', 'content', 'lyrics');
+// Custom remark plugins for lyrics formatting
+function remarkLyricsPlugin() {
+  return function(tree: any) {
+    // Handle special characters and formatting
+    visit(tree, 'text', (node: any) => {
+      // Preserve line breaks
+      node.value = node.value.replace(/\\n/g, '\n');
+      // Handle em dashes
+      node.value = node.value.replace(/---/g, '—');
+      // Handle ellipsis
+      node.value = node.value.replace(/\.\.\./g, '…');
+      // Handle quotes
+      node.value = node.value.replace(/"([^"]*)"/g, '"$1"');
+    });
+  };
 }
 
 export async function processSongMarkdown(
@@ -83,7 +93,8 @@ export async function processSongMarkdown(
   const metadata = data as SongMetadata;
 
   const processedContent = await remark()
-    .use(html)
+    .use(remarkLyricsPlugin)
+    .use(html, { sanitize: true })
     .process(markdownContent);
   const contentHtml = processedContent.toString();
 
@@ -96,6 +107,12 @@ export async function processSongMarkdown(
     processedLyrics = convertSyncedLyricsToPlain(metadata.syncedLyrics);
     processedSyncedLyrics = formatSyncedLyrics(metadata.syncedLyrics);
   }
+
+  // Apply lyrics-specific formatting
+  processedLyrics = processedLyrics
+    .split('\n')
+    .map(line => line.trim())
+    .join('\n');
 
   const song: ProcessedSong = {
     id: slug,
@@ -118,9 +135,6 @@ export async function processSongMarkdown(
   return song;
 }
 
-/**
- * Convert synced lyrics to plain text by removing timing tags
- */
 export function convertSyncedLyricsToPlain(syncedLyrics: string): string {
   return syncedLyrics
     .split('\n')
@@ -128,9 +142,6 @@ export function convertSyncedLyricsToPlain(syncedLyrics: string): string {
     .join('\n');
 }
 
-/**
- * Format synced lyrics to ensure consistent timing format
- */
 export function formatSyncedLyrics(syncedLyrics: string): string {
   return syncedLyrics
     .split('\n')
@@ -186,36 +197,35 @@ export function getSpotifyEmbedUrl(url: string = ''): string {
   return `https://open.spotify.com/embed/track/${trackId}`;
 }
 
-// Album management functions
 export async function getAllAlbums(): Promise<Album[]> {
   const songIndex = await getSongIndex();
   
   // Group songs by album
   const albumMap = new Map<string, SongIndexEntry[]>();
   songIndex.forEach(entry => {
-    if (!albumMap.has(entry.album)) {
-      albumMap.set(entry.album, []);
+    if (!albumMap.has(entry.Album)) {
+      albumMap.set(entry.Album, []);
     }
-    albumMap.get(entry.album)?.push(entry);
+    albumMap.get(entry.Album)?.push(entry);
   });
 
   // Convert to Album objects
   const albums: Album[] = Array.from(albumMap.entries()).map(([albumTitle, songs], index) => {
     const tracks: Track[] = songs
-      .sort((a, b) => a.trackNumber - b.trackNumber)
+      .sort((a, b) => parseInt(a['Track Number']) - parseInt(b['Track Number']))
       .map(song => ({
-        id: `${albumToDirectoryName(song.album)}-${song.trackNumber}`,
-        title: song.songTitle,
-        slug: titleToSlug(song.songTitle),
-        duration: '--:--', // Default duration since it's required by Track type
+        id: `${albumToDirectoryName(song.Album)}-${song['Track Number']}`,
+        title: song['Song Title'],
+        slug: titleToSlug(song['Song Title']),
+        duration: '--:--',
         description: '',
         tags: []
       }));
 
     return {
-      id: index + 1, // Use numeric ID as required by Album type
+      id: index + 1,
       title: albumTitle,
-      year: songs[0].year,
+      year: songs[0].Year,
       coverArt: '/assets/albums/placeholder.svg',
       description: '',
       tracks
@@ -233,48 +243,51 @@ export async function getAlbumById(id: string | number | undefined): Promise<Alb
   return albums.find(album => album.id === numId);
 }
 
-// Song management functions
 export async function getAllSongs(): Promise<Song[]> {
   const albums = await getAllAlbums();
   return albums.flatMap(album => 
     (album.tracks || []).map(track => ({
       ...track,
-      id: track.id.toString(), // Ensure id is string as required by Song type
+      id: track.id.toString(),
       albumId: album.id.toString()
     }))
   );
 }
 
 export async function getSongBySlug(slug: string): Promise<ProcessedSong | undefined> {
-  const songIndex = await getSongIndex();
-  const entry = songIndex.find(s => titleToSlug(s.songTitle) === slug);
-  
-  if (!entry || entry.hasLyrics !== 'Yes') {
-    return undefined;
-  }
-
   try {
-    const albumDir = albumToDirectoryName(entry.album);
-    const songPath = path.join(
-      getContentPath(),
-      albumDir,
-      `${titleToSlug(entry.songTitle)}.md`
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/lyrics?slug=${slug}`);
+    if (!response.ok) {
+      return undefined;
+    }
+    
+    const { content, songIndex } = await response.json();
+    const entry = songIndex.find((s: SongIndexEntry) => 
+      titleToSlug(s['Song Title']) === slug
     );
+    
+    if (!entry) {
+      return undefined;
+    }
 
-    const content = await fs.readFile(songPath, 'utf-8');
+    // Get all albums to find the numeric ID
+    const albums = await getAllAlbums();
+    const album = albums.find(a => a.title === entry.Album);
+    const numericAlbumId = album ? album.id.toString() : '1';
+
     const processed = await processSongMarkdown(slug, content);
 
     return {
       ...processed,
-      albumId: albumDir
+      albumId: numericAlbumId
     };
   } catch (error) {
-    console.error(`Error reading song file for ${slug}:`, error);
+    console.error(`Error fetching song ${slug}:`, error);
     return undefined;
   }
 }
 
-// Helper function to get related songs
 export async function getRelatedSongs(currentSong: Song, limit: number = 3): Promise<Song[]> {
   const allSongs = await getAllSongs();
   return allSongs
@@ -285,26 +298,46 @@ export async function getRelatedSongs(currentSong: Song, limit: number = 3): Pro
     .slice(0, limit);
 }
 
-// Helper function to ensure HTML content is safe
 export function getSafeHtml(content: string | undefined): string {
   return content || '';
 }
 
-// Get previous and next songs within the same album
-export async function getAdjacentSongs(currentSong: Song): Promise<{ previous?: Song; next?: Song }> {
+export async function getNavigationData(currentSong: Song): Promise<{
+  previous?: Song;
+  next?: Song;
+  albumSongs: Song[];
+  currentIndex: number;
+}> {
   const songIndex = await getSongIndex();
+  // Get all albums to find the current album
+  const albums = await getAllAlbums();
+  const currentAlbum = albums.find(a => a.id.toString() === currentSong.albumId);
+  
+  if (!currentAlbum) return { albumSongs: [], currentIndex: -1 };
+
   const currentEntry = songIndex.find(s => 
-    titleToSlug(s.songTitle) === currentSong.slug && 
-    albumToDirectoryName(s.album) === currentSong.albumId
+    titleToSlug(s['Song Title']) === currentSong.slug && 
+    s.Album === currentAlbum.title
   );
 
-  if (!currentEntry) return {};
+  if (!currentEntry) return { albumSongs: [], currentIndex: -1 };
+
+  const numericAlbumId = currentAlbum.id.toString();
 
   const albumSongs = songIndex
-    .filter(s => s.album === currentEntry.album)
-    .sort((a, b) => a.trackNumber - b.trackNumber);
+    .filter(s => s.Album === currentEntry.Album)
+    .sort((a, b) => parseInt(a['Track Number']) - parseInt(b['Track Number']))
+    .map(entry => ({
+      id: `${albumToDirectoryName(entry.Album)}-${entry['Track Number']}`,
+      title: entry['Song Title'],
+      slug: titleToSlug(entry['Song Title']),
+      albumId: numericAlbumId,
+      duration: '--:--',
+      description: '',
+      hasLyrics: entry['Has Lyrics']
+    }));
 
-  const currentIdx = albumSongs.findIndex(s => s.trackNumber === currentEntry.trackNumber);
+  const currentIdx = albumSongs.findIndex(s => s.slug === currentSong.slug);
   
   let previous: Song | undefined;
   let next: Song | undefined;
@@ -312,15 +345,7 @@ export async function getAdjacentSongs(currentSong: Song): Promise<{ previous?: 
   // Find previous song with lyrics
   for (let i = currentIdx - 1; i >= 0; i--) {
     if (albumSongs[i].hasLyrics === 'Yes') {
-      const entry = albumSongs[i];
-      previous = {
-        id: `${albumToDirectoryName(entry.album)}-${entry.trackNumber}`,
-        title: entry.songTitle,
-        slug: titleToSlug(entry.songTitle),
-        albumId: albumToDirectoryName(entry.album),
-        duration: '--:--',
-        description: ''
-      };
+      previous = albumSongs[i];
       break;
     }
   }
@@ -328,18 +353,15 @@ export async function getAdjacentSongs(currentSong: Song): Promise<{ previous?: 
   // Find next song with lyrics
   for (let i = currentIdx + 1; i < albumSongs.length; i++) {
     if (albumSongs[i].hasLyrics === 'Yes') {
-      const entry = albumSongs[i];
-      next = {
-        id: `${albumToDirectoryName(entry.album)}-${entry.trackNumber}`,
-        title: entry.songTitle,
-        slug: titleToSlug(entry.songTitle),
-        albumId: albumToDirectoryName(entry.album),
-        duration: '--:--',
-        description: ''
-      };
+      next = albumSongs[i];
       break;
     }
   }
 
-  return { previous, next };
+  return {
+    previous,
+    next,
+    albumSongs: albumSongs.filter(song => song.hasLyrics === 'Yes'),
+    currentIndex: currentIdx
+  };
 }

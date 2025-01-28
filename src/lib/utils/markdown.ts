@@ -1,4 +1,6 @@
 import { ProcessedSong, Song, Track, Album } from '@/types/index.js';
+import { AlbumMetadata, LyricsMetadata, TrackMetadata } from '@/types/album';
+import { getAlbumImageUrl } from './image-processing';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -14,19 +16,6 @@ interface SongIndexEntry {
   'Has Lyrics': LyricsStatus;
 }
 
-interface SongMetadata {
-  title: string;
-  albumId: string;
-  description?: string;
-  duration?: string;
-  youtubeUrl?: string;
-  spotifyUrl?: string;
-  tags?: string[];
-  contributors?: string[];
-  lrcLibId?: number;
-  isVerified?: boolean;
-  syncedLyrics?: string;
-}
 
 // Function to get base URL for API calls
 function getBaseUrl(): string {
@@ -90,7 +79,7 @@ export async function processSongMarkdown(
   content: string
 ): Promise<ProcessedSong> {
   const { data, content: markdownContent } = matter(content);
-  const metadata = data as SongMetadata;
+  const metadata = data as LyricsMetadata;
 
   const processedContent = await remark()
     .use(remarkLyricsPlugin)
@@ -117,18 +106,15 @@ export async function processSongMarkdown(
   const song: ProcessedSong = {
     id: slug,
     title: metadata.title,
-    albumId: metadata.albumId,
+    albumId: metadata.album,
     description: metadata.description || '',
-    duration: metadata.duration || '--:--',
-    youtubeUrl: metadata.youtubeUrl,
-    spotifyUrl: metadata.spotifyUrl,
+    duration: '--:--',
     tags: metadata.tags || [],
     contributors: metadata.contributors || [],
     content: contentHtml,
     lyrics: processedLyrics,
     syncedLyrics: processedSyncedLyrics,
-    lrcLibId: metadata.lrcLibId,
-    isVerified: metadata.isVerified || false,
+    media: metadata.media,
     slug
   };
 
@@ -226,7 +212,7 @@ export async function getAllAlbums(): Promise<Album[]> {
       id: index + 1,
       title: albumTitle,
       year: songs[0].Year,
-      coverArt: '/assets/albums/placeholder.svg',
+      coverArt: getAlbumImageUrl(albumTitle),
       description: '',
       tracks
     };

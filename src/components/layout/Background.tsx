@@ -9,8 +9,8 @@ export function Background() {
       <div className="absolute inset-0 bg-noise opacity-5" />
       
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent to-navy-900/50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900/30" />
+      <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />
     </div>
   );
 }

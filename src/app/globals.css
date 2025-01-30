@@ -5,7 +5,7 @@
 @layer base {
   /* Base text styles */
   body {
-    @apply text-gray-100 leading-normal;
+    @apply text-white leading-normal;
   }
 
   /* Heading styles */
@@ -25,5 +25,15 @@
 
   .song-title {
     @apply text-3xl font-bold mb-4 text-white;
+  }
+
+  /* Link styles */
+  a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+
+  /* Button styles */
+  .btn-retro {
+    @apply bg-gray-800 text-white hover:bg-gray-700;
   }
 }

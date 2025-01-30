@@ -14,10 +14,10 @@ export default async function HomePage() {
         <div className="flex flex-col-reverse md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="text-retro-paper">WookieFoot</span>
+              <span className="text-white">WookieFoot</span>
               <span className="text-gradient block mt-2">Lyrics Archive</span>
             </h1>
-            <p className="mt-6 text-lg text-retro-paper/80 max-w-2xl">
+            <p className="mt-6 text-lg text-gray-300 max-w-2xl">
               Explore lyrics, discover meanings, and connect with other fans in our
               growing community of WookieFoot enthusiasts.
             </p>
@@ -65,10 +65,10 @@ export default async function HomePage() {
               />
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-bold text-retro-paper">
+              <h3 className="text-xl font-bold text-white">
                 {featuredAlbum.title}
               </h3>
-              <p className="text-retro-paper/60 mt-2">
+              <p className="text-gray-400 mt-2">
                 {featuredAlbum.description}
               </p>
               <Link
@@ -98,14 +98,14 @@ export default async function HomePage() {
                 <RetroCard variant="default" className="p-4 hover-lift">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h3 className="font-medium text-retro-paper group-hover:text-gradient">
+                      <h3 className="font-medium text-white group-hover:text-gradient">
                         {track.title}
                       </h3>
-                      <p className="text-sm text-retro-paper/60">
+                      <p className="text-sm text-gray-400">
                         {featuredAlbum.title}
                       </p>
                     </div>
-                    <span className="text-sm text-retro-paper/60">
+                    <span className="text-sm text-gray-400">
                       {track.duration}
                     </span>
                   </div>
@@ -130,7 +130,7 @@ export default async function HomePage() {
         <h2 className="text-3xl font-bold text-gradient mb-4">
           Join the Community
         </h2>
-        <p className="text-lg text-retro-paper/80 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
           Connect with other WookieFoot fans, share your interpretations, and
           discover new perspectives on your favorite songs.
         </p>

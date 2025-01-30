@@ -13,9 +13,9 @@ export function RetroCard({
 }: RetroCardProps) {
   const baseStyles = 'relative rounded-lg p-4 backdrop-blur-sm';
   const variantStyles = {
-    default: 'bg-navy-800/80 border-2 border-blue-300/20',
-    primary: 'bg-navy-900/90 border-2 border-pink-400/30',
-    secondary: 'bg-navy-700/70 border-2 border-blue-400/20'
+    default: 'bg-black border-2 border-gray-800',
+    primary: 'bg-black border-2 border-gray-800',
+    secondary: 'bg-black border-2 border-gray-800'
   };
 
   return (

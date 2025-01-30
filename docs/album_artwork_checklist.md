@@ -28,8 +28,8 @@ The script will:
 ## Required Images
 
 ### You're IT! (2024)
-- [ ] Full: `/public/images/albums/full/youre-it.png`
-- [ ] Thumbnail: `/public/images/albums/thumbnails/youre-it.png`
+- [x] Full: `/public/images/albums/full/youre-it.png`
+- [x] Thumbnail: `/public/images/albums/thumbnails/youre-it.png`
 
 ### Activate (2023)
 - [ ] Full: `/public/images/albums/full/activate.png`
@@ -40,8 +40,8 @@ The script will:
 - [ ] Thumbnail: `/public/images/albums/thumbnails/be-fearless-and-play.png`
 
 ### Make Belief (2019)
-- [ ] Full: `/public/images/albums/full/make-belief.png`
-- [ ] Thumbnail: `/public/images/albums/thumbnails/make-belief.png`
+- [x] Full: `/public/images/albums/full/make-belief.png`
+- [x] Thumbnail: `/public/images/albums/thumbnails/make-belief.png`
 
 ### Domesticated (2016)
 - [ ] Full: `/public/images/albums/full/domesticated.png`
@@ -52,8 +52,8 @@ The script will:
 - [ ] Thumbnail: `/public/images/albums/thumbnails/out-of-the-jar.png`
 
 ### Ready or Not... (2010)
-- [ ] Full: `/public/images/albums/full/ready-or-not.png`
-- [ ] Thumbnail: `/public/images/albums/thumbnails/ready-or-not.png`
+- [x] Full: `/public/images/albums/full/ready-or-not.png`
+- [x] Thumbnail: `/public/images/albums/thumbnails/ready-or-not.png`
 
 ### Writing on the Wall (2004)
 - [x] Full: `/public/images/albums/full/writing-on-the-wall.png`

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { RetroCard } from '@/components/ui/RetroCard';
-import { VinylRecord } from '@/components/ui/VinylRecord';
+import { AlbumCover } from '@/components/ui/AlbumCover';
 import { getAllAlbums } from '@/lib/utils/markdown';
 
 export default async function HomePage() {
@@ -39,10 +39,9 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="w-72 md:w-96 transform hover:scale-105 transition-transform duration-300 relative z-10">
-            <VinylRecord
+            <AlbumCover
               albumArt={featuredAlbum.coverArt}
               title={featuredAlbum.title}
-              isPlaying={true}
               priority={true}
               size="lg"
             />
@@ -59,10 +58,9 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-4">
             <div className="w-48 mx-auto transform hover:scale-105 transition-transform duration-300">
-              <VinylRecord
+              <AlbumCover
                 albumArt={featuredAlbum.coverArt}
                 title={featuredAlbum.title}
-                isPlaying={false}
                 size="md"
               />
             </div>

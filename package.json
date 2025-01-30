@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify-lyrics": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/verify-lyrics.ts"
+    "verify-lyrics": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/verify-lyrics.ts",
+    "process-album-art": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/process-album-art.ts",
+    "upscale-album-art": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/upscale-album-art.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",

@@ -5,20 +5,28 @@ export default function Loading() {
     <div className="min-h-[60vh] flex items-center justify-center px-4">
       <RetroCard variant="primary" className="max-w-lg w-full p-8">
         <div className="space-y-8 text-center">
-          {/* Vinyl record loading animation */}
+          {/* Square loading animation */}
           <div className="relative w-48 h-48 mx-auto">
-            <div className="absolute inset-0 rounded-full bg-navy-800/80 border-2 border-accent-blue/20 animate-spin-slow">
-              {/* Record grooves */}
-              <div className="absolute inset-4 rounded-full border border-accent-blue/10" />
-              <div className="absolute inset-8 rounded-full border border-accent-blue/10" />
-              <div className="absolute inset-12 rounded-full border border-accent-blue/10" />
-              <div className="absolute inset-16 rounded-full border border-accent-blue/10" />
-              
-              {/* Center hole */}
-              <div className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-navy-900 border-2 border-accent-blue/20">
-                <div className="absolute inset-0 m-auto w-2 h-2 rounded-full bg-accent-blue/20" />
+            <RetroCard variant="secondary" className="relative aspect-square">
+              <div className="absolute inset-0 bg-navy-800/80 border-2 border-accent-blue/20 animate-pulse">
+                {/* Decorative grid lines */}
+                <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
+                  {[...Array(9)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="border border-accent-blue/10"
+                    />
+                  ))}
+                </div>
+                
+                {/* Center icon */}
+                <div className="absolute inset-0 m-auto w-12 h-12 flex items-center justify-center">
+                  <div className="text-accent-blue/40 text-3xl animate-bounce">
+                    ♪
+                  </div>
+                </div>
               </div>
-            </div>
+            </RetroCard>
           </div>
 
           {/* Loading text */}
@@ -27,7 +35,7 @@ export default function Loading() {
               Loading...
             </h2>
             <p className="text-retro-paper/60">
-              Dropping the needle on your request
+              Preparing your musical journey
             </p>
           </div>
 

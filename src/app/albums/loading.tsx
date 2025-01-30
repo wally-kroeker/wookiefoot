@@ -16,11 +16,9 @@ export default function AlbumsLoading() {
             <div className="space-y-6">
               {/* Album artwork skeleton */}
               <div className="relative w-48 h-48 mx-auto">
-                <div className="absolute inset-0 rounded-full bg-navy-700/50 animate-pulse">
-                  <div className="absolute inset-4 rounded-full border border-navy-600/20" />
-                  <div className="absolute inset-8 rounded-full border border-navy-600/20" />
-                  <div className="absolute inset-12 rounded-full border border-navy-600/20" />
-                </div>
+                <RetroCard variant="secondary" className="relative aspect-square">
+                  <div className="w-full h-full bg-navy-700/50 rounded-lg animate-pulse" />
+                </RetroCard>
               </div>
 
               {/* Album info skeleton */}
@@ -43,9 +41,10 @@ export default function AlbumsLoading() {
       {/* Featured album skeleton */}
       <RetroCard variant="primary" className="p-6">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="w-64 h-64 rounded-full bg-navy-700/50 animate-pulse">
-            <div className="absolute inset-4 rounded-full border border-navy-600/20" />
-            <div className="absolute inset-8 rounded-full border border-navy-600/20" />
+          <div className="w-64">
+            <RetroCard variant="secondary" className="relative aspect-square">
+              <div className="w-full h-full bg-navy-700/50 rounded-lg animate-pulse" />
+            </RetroCard>
           </div>
           <div className="flex-1 space-y-4">
             <div className="h-8 w-48 bg-navy-700/50 rounded-lg animate-pulse" />

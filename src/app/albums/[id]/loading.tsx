@@ -8,17 +8,9 @@ export default function AlbumLoading() {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Album artwork skeleton */}
           <div className="w-72">
-            <div className="relative aspect-square rounded-full bg-navy-700/50 animate-pulse">
-              <div className="absolute inset-4 rounded-full border border-navy-600/20" />
-              <div className="absolute inset-8 rounded-full border border-navy-600/20" />
-              <div className="absolute inset-12 rounded-full border border-navy-600/20" />
-              <div className="absolute inset-16 rounded-full border border-navy-600/20" />
-              
-              {/* Center hole */}
-              <div className="absolute inset-0 m-auto w-8 h-8 rounded-full bg-navy-900">
-                <div className="absolute inset-0 m-auto w-2 h-2 rounded-full bg-navy-700" />
-              </div>
-            </div>
+            <RetroCard variant="secondary" className="relative aspect-square">
+              <div className="w-full h-full bg-navy-700/50 rounded-lg animate-pulse" />
+            </RetroCard>
           </div>
 
           {/* Album info skeleton */}

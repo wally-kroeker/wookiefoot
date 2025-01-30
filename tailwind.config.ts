@@ -21,8 +21,8 @@ const config: Config = {
           blue: '#4D96FF',
         },
         retro: {
-          paper: '#F5F3ED',
-          ink: '#2C3E50',
+          paper: '#1A1A1A', // Dark background
+          ink: '#E5E5E5',   // Light text
         }
       },
       typography: {

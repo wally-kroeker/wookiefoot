@@ -41,8 +41,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} min-h-full bg-navy-900 flex flex-col`}>
-        {/* Background with noise and decorative elements */}
+      <body className={`${inter.className} min-h-full bg-black flex flex-col`}>
+        {/* Background with noise texture */}
         <Background />
 
         {/* Main content wrapper */}
@@ -62,7 +62,7 @@ export default function RootLayout({
         </div>
 
         {/* Overlay gradient for depth */}
-        <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-navy-900/50 to-transparent" />
+        <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-navy-900/80 to-transparent" />
       </body>
     </html>
   );

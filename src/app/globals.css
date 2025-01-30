@@ -5,25 +5,35 @@
 @layer base {
   /* Base text styles */
   body {
-    @apply text-gray-900 leading-normal;
+    @apply text-white leading-normal;
   }
 
   /* Heading styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold leading-tight;
+    @apply font-bold leading-tight text-white;
   }
 
   /* Lyrics specific styles */
   .prose .lyrics {
-    @apply whitespace-pre-wrap text-lg leading-relaxed;
+    @apply whitespace-pre-wrap text-lg leading-relaxed text-gray-200;
   }
 
   /* Album and song title styles */
   .album-title {
-    @apply text-4xl font-bold mb-6;
+    @apply text-4xl font-bold mb-6 text-white;
   }
 
   .song-title {
-    @apply text-3xl font-bold mb-4;
+    @apply text-3xl font-bold mb-4 text-white;
+  }
+
+  /* Link styles */
+  a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+
+  /* Button styles */
+  .btn-retro {
+    @apply bg-gray-800 text-white hover:bg-gray-700;
   }
 }

@@ -59,12 +59,18 @@ export interface Song {
   albumId?: string;
   slug?: string;
   description?: string;
-  youtubeUrl?: string;
-  spotifyUrl?: string;
   tags?: string[];
   contributors?: string[];
-  lrcLibId?: number;
-  isVerified?: boolean;
+  media?: {
+    spotify?: {
+      trackId: string;
+      uri: string;
+    };
+    youtube?: {
+      videoId: string;
+      url: string;
+    };
+  };
   syncedLyrics?: string;
 }
 

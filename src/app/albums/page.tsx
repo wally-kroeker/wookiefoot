@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { RetroCard } from '@/components/ui/RetroCard';
-import { VinylRecord } from '@/components/ui/VinylRecord';
+import { AlbumCover } from '@/components/ui/AlbumCover';
 import { getAllAlbums } from '@/lib/utils/markdown';
 
 export default async function AlbumsPage() {
@@ -33,10 +33,9 @@ export default async function AlbumsPage() {
               <div className="space-y-6">
                 {/* Album artwork as vinyl */}
                 <div className="relative w-48 h-48 mx-auto transform group-hover:scale-105 transition-transform duration-500">
-                  <VinylRecord
+                  <AlbumCover
                     albumArt={album.coverArt}
                     title={album.title}
-                    isPlaying={false}
                     size="md"
                   />
                 </div>
@@ -72,10 +71,9 @@ export default async function AlbumsPage() {
         <RetroCard variant="primary" className="p-8">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-64 transform hover:scale-105 transition-transform duration-300">
-              <VinylRecord
+              <AlbumCover
                 albumArt={albums[0].coverArt}
                 title={albums[0].title}
-                isPlaying={true}
                 size="lg"
               />
             </div>

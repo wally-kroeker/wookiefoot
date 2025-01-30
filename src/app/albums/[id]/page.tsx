@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { RetroCard } from '@/components/ui/RetroCard';
-import { VinylRecord } from '@/components/ui/VinylRecord';
+import { AlbumCover } from '@/components/ui/AlbumCover';
 import { 
   getAlbumById, 
   getAllAlbums,
@@ -58,10 +58,9 @@ export default async function AlbumPage({ params }: PageProps) {
       <RetroCard variant="primary" className="p-8">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="w-72 transform hover:scale-105 transition-transform duration-500">
-            <VinylRecord
+            <AlbumCover
               albumArt={album.coverArt}
               title={album.title}
-              isPlaying={false}
               priority={true}
               size="lg"
             />

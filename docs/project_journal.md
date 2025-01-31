@@ -1,6 +1,63 @@
 # WookieFoot Project Journal
 
 ## 2025-01-30
+### Enhanced Lyrics Fetching System
+
+#### Activities Completed:
+1. Enhanced lyrics fetching capabilities:
+   - Created enhanced_lyrics_fetcher.py with multi-source support
+   - Added direct URL pattern matching for multiple lyrics sites
+   - Implemented manual input fallback with clear instructions
+   - Added music link finding (YouTube Music and Spotify)
+
+2. Added new lyrics sources:
+   - songlyrics.com with direct URL pattern
+   - elyrics.net with direct URL pattern
+   - lyrics.az with direct URL pattern
+   - Improved Tavily search across multiple domains
+
+3. Created specialized fetchers:
+   - lyricsaz_fetcher.py for lyrics.az specific fetching
+   - Improved error handling and logging
+   - Added progress tracking and statistics
+   - Implemented proper rate limiting
+
+4. Technical Improvements:
+   - Better URL pattern matching
+   - Robust error handling
+   - Detailed logging system
+   - Progress tracking with statistics
+   - Proper markdown file generation
+   - song_index.csv status tracking
+
+#### Implementation Details:
+1. Enhanced Fetcher Features:
+   - Multi-source fetching with fallback
+   - Direct URL pattern matching
+   - Manual input with clear instructions
+   - Music link finding (YouTube/Spotify)
+   - Markdown file generation
+   - CSV status tracking
+
+2. File Organization:
+   - Lyrics stored in /src/content/lyrics/
+   - Organized by album directories
+   - Consistent markdown formatting
+   - Proper frontmatter metadata
+
+#### Next Steps:
+1. Process remaining failed songs
+2. Add more lyrics sources
+3. Improve error handling
+4. Add batch processing capabilities
+
+#### Notes:
+- Successfully fetched many missing lyrics
+- Manual input system works well
+- Multiple sources improve success rate
+- Music link finding adds value
+
+## 2025-01-30
 ### Dark Theme Implementation
 
 #### Activities Completed:

@@ -29,16 +29,16 @@ export function AlbumCover({
   };
 
   return (
-    <RetroCard variant="secondary" className={`relative group ${className}`}>
+    <RetroCard variant="secondary" className={`relative ${className}`}>
       {/* Album artwork with error handling */}
-      <div className={`relative aspect-square overflow-hidden ${sizeClasses[size]}`}>
+      <div className={`relative aspect-square overflow-hidden ${sizeClasses[size]} z-0`}>
         {albumArt ? (
           <Image
             src={albumArt}
             alt={title}
             fill
             priority={priority}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500"
             sizes={size === 'sm' ? '8rem' : size === 'md' ? '12rem' : '16rem'}
             onError={(e) => {
               // Replace broken image with the placeholder
@@ -50,15 +50,6 @@ export function AlbumCover({
             {/* Placeholder content if needed */}
           </div>
         )}
-      </div>
-
-      {/* Title overlay on hover */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="bg-navy-900/80 px-4 py-2 rounded-lg backdrop-blur-sm">
-          <p className="text-retro-paper font-medium text-sm truncate max-w-[200px]">
-            {title}
-          </p>
-        </div>
       </div>
     </RetroCard>
   );

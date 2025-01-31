@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { RetroCard } from '@/components/ui/RetroCard';
+import { AlbumCover } from '@/components/ui/AlbumCover';
 import { getAllSongs } from '@/lib/utils/markdown';
 
 export default async function LyricsPage() {
@@ -30,15 +31,31 @@ export default async function LyricsPage() {
               className="p-6 hover-lift group transition-all duration-300 hover:bg-navy-800/50"
             >
               <div className="space-y-4">
-                <div>
-                  <h2 className="text-xl font-bold text-retro-paper group-hover:text-gradient">
-                    {song.title}
-                  </h2>
-                  {song.description && (
-                    <p className="mt-2 text-sm text-retro-paper/60">
-                      {song.description}
-                    </p>
+                <div className="flex gap-4">
+                  {song.albumCoverArt && (
+                    <div className="flex-shrink-0">
+                      <AlbumCover
+                        albumArt={song.albumCoverArt}
+                        title={song.albumTitle || ''}
+                        size="sm"
+                      />
+                    </div>
                   )}
+                  <div>
+                    <h2 className="text-xl font-bold text-retro-paper group-hover:text-gradient">
+                      {song.title}
+                    </h2>
+                    {song.albumTitle && (
+                      <p className="mt-1 text-sm text-retro-paper/80">
+                        from {song.albumTitle}
+                      </p>
+                    )}
+                    {song.description && (
+                      <p className="mt-2 text-sm text-retro-paper/60">
+                        {song.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Tags */}

@@ -53,8 +53,11 @@ function titleToSlug(title: string): string {
 function albumToDirectoryName(album: string): string {
   return album
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+    .replace(/[''"]/g, '') // Remove apostrophes and quotes
+    .replace(/[^a-z0-9]+/g, '-') // Replace any non-alphanumeric with single hyphen
+    .replace(/-{2,}/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
+    .trim();
 }
 
 // Custom remark plugins for lyrics formatting
@@ -212,7 +215,7 @@ export async function getAllAlbums(): Promise<Album[]> {
       id: index + 1,
       title: albumTitle,
       year: songs[0].Year,
-      coverArt: getAlbumImageUrl(albumTitle),
+      coverArt: getAlbumImageUrl(albumTitle, 'full'),
       description: '',
       tracks
     };
@@ -231,11 +234,13 @@ export async function getAlbumById(id: string | number | undefined): Promise<Alb
 
 export async function getAllSongs(): Promise<Song[]> {
   const albums = await getAllAlbums();
-  return albums.flatMap(album => 
+  return albums.flatMap(album =>
     (album.tracks || []).map(track => ({
       ...track,
       id: track.id.toString(),
-      albumId: album.id.toString()
+      albumId: album.id.toString(),
+      albumTitle: album.title,
+      albumCoverArt: getAlbumImageUrl(album.title, 'thumbnail')
     }))
   );
 }

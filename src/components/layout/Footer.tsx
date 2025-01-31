@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { RetroCard } from '../ui/RetroCard';
 
@@ -30,7 +32,7 @@ const navigation = {
   ],
 };
 
-export function Footer() {
+export default function Footer() {
   return (
     <RetroCard variant="primary" className="mt-12 mx-4">
       <footer className="p-8">

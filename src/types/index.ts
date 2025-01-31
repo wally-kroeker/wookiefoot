@@ -57,6 +57,8 @@ export interface Song {
   duration: string;
   lyrics?: string;
   albumId?: string;
+  albumTitle?: string;
+  albumCoverArt?: string;
   slug?: string;
   description?: string;
   tags?: string[];

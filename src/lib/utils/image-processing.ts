@@ -43,13 +43,20 @@ export function getAlbumImageUrl(
   albumName: string,
   type: 'full' | 'thumbnail' = 'full'
 ): string {
-  const sanitizedName = albumName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return `/images/albums/${type}/${sanitizedName}.png`;
+  const sanitizedName = sanitizeAlbumName(albumName);
+  const basePath = type === 'full' ? '/images/albums/full' : '/images/albums/thumbnails';
+  return `${basePath}/${sanitizedName}.png`;
 }
 
 /**
  * Helper function to sanitize album names consistently
  */
 export function sanitizeAlbumName(albumName: string): string {
-  return albumName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return albumName
+    .toLowerCase()
+    .replace(/[''"]/g, '') // Remove apostrophes and quotes
+    .replace(/[^a-z0-9]+/g, '-') // Replace any non-alphanumeric with single hyphen
+    .replace(/-{2,}/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
+    .trim();
 }

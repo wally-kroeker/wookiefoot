@@ -63,6 +63,9 @@ export interface Song {
   description?: string;
   tags?: string[];
   contributors?: string[];
+  youtubeUrl?: string;
+  spotifyUrl?: string;
+  hasLyrics?: 'Yes' | 'Failed' | 'Skipped';
   media?: {
     spotify?: {
       trackId: string;
@@ -97,4 +100,5 @@ export interface Tag {
 // Helper type for markdown processing
 export interface ProcessedSong extends Song {
   content?: string;
+  backgroundImage?: string;
 }

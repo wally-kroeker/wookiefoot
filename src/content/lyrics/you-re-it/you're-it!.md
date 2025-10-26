@@ -11,6 +11,7 @@ tags:
 title: You're It!
 trackNumber: '7'
 youtubeUrl: ''
+backgroundImage: /public/assets/backgrounds/you-re-it.png
 ---
 
 By the waters edge, the current running swift

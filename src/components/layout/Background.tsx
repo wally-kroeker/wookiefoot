@@ -2,12 +2,19 @@
 
 import React from 'react';
 
-export default function Background() {
+interface BackgroundProps {
+  backgroundImage?: string;
+}
+
+export default function Background({ backgroundImage }: BackgroundProps) {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div
+      className="fixed inset-0 -z-10 overflow-hidden bg-black"
+      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' } : {}}
+    >
       {/* Noise overlay */}
       <div className="absolute inset-0 bg-noise opacity-5" />
-      
+
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/50" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />

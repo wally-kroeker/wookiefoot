@@ -3,6 +3,8 @@ import { RetroCard } from '@/components/ui/RetroCard';
 import { AlbumCover } from '@/components/ui/AlbumCover';
 import { getAllAlbums } from '@/lib/utils/markdown';
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
   const albums = await getAllAlbums();
   const featuredAlbum = albums[0]; // Latest album

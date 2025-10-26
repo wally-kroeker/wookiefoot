@@ -2,40 +2,48 @@ import Link from 'next/link';
 import { RetroCard } from '@/components/ui/RetroCard';
 import { LyricsSubmissionForm } from '@/components/forms/LyricsSubmissionForm';
 import { getAllSongs } from '@/lib/utils/markdown';
+import { headers } from 'next/headers';
 
-interface NotFoundProps {
-  params?: {
-    slug?: string;
-  };
-}
+export default async function NotFound() {
+  // Get the current URL path from headers
+  const headersList = await headers();
+  const pathname = headersList.get('x-invoke-path') || '';
+  const songSlug = pathname.includes('/lyrics/') ? pathname.split('/lyrics/')[1] : '';
+  console.log('Current path:', pathname);
+  console.log('Song slug:', songSlug);
 
-export default async function NotFound({ params }: NotFoundProps) {
-  // Get the song slug from params or URL
-  const songSlug = params?.slug || '';
-  console.log('Song Slug:', songSlug);
-
-  // Format song title from slug for display
-  const formattedTitle = songSlug
-    .split('-')
-    .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-  console.log('Formatted Title:', formattedTitle);
+  // if (!songSlug) {
+  //   console.error('Song slug is undefined');
+  // }
 
   // Try to get song info from our song index
-  let songTitle = formattedTitle;
+  let songTitle = '';
   let albumName = '';
 
   try {
     const allSongs = await getAllSongs();
     console.log('All Songs:', allSongs);
+    console.log('Looking for slug:', songSlug);
     const songInfo = allSongs.find(song => song.slug === songSlug);
-    console.log('Song Info:', songInfo);
+    console.log('Found song:', songInfo);
+    
     if (songInfo) {
       songTitle = songInfo.title;
       albumName = songInfo.albumTitle || '';
+    } else {
+      // Fallback to formatted slug if song not found
+      songTitle = songSlug
+        .split('-')
+        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
     }
   } catch (error) {
     console.error('Error fetching song info:', error);
+    // Fallback to formatted slug if error occurs
+    songTitle = songSlug
+      .split('-')
+      .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   return (

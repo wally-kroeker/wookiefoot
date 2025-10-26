@@ -2,18 +2,24 @@ import { ProcessedSong, Song, Track, Album } from '@/types/index.js';
 import { AlbumMetadata, LyricsMetadata, TrackMetadata } from '@/types/album';
 import { getAlbumImageUrl } from './image-processing';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolink from 'rehype-autolink-headings';
 import { visit } from 'unist-util-visit';
 
 type LyricsStatus = 'Yes' | 'Failed' | 'Skipped';
 
 interface SongIndexEntry {
   Album: string;
-  Year: string;
-  'Song Title': string;
   'Track Number': string;
+  Title: string;
+  'Song Slug': string;
   'Has Lyrics': LyricsStatus;
+  'Album Directory': string;
+  Duration: string;
 }
 
 
@@ -84,11 +90,16 @@ export async function processSongMarkdown(
   const { data, content: markdownContent } = matter(content);
   const metadata = data as LyricsMetadata;
 
-  const processedContent = await remark()
-    .use(remarkLyricsPlugin)
-    .use(html, { sanitize: true })
+  // Process markdown to HTML using unified pipeline
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeAutolink, { behavior: 'wrap' })
+    .use(rehypeStringify)
     .process(markdownContent);
-  const contentHtml = processedContent.toString();
+
+  const contentHtml = String(processedContent);
 
   // Process synced lyrics if available
   let processedLyrics = markdownContent;
@@ -203,10 +214,10 @@ export async function getAllAlbums(): Promise<Album[]> {
     const tracks: Track[] = songs
       .sort((a, b) => parseInt(a['Track Number']) - parseInt(b['Track Number']))
       .map(song => ({
-        id: `${albumToDirectoryName(song.Album)}-${song['Track Number']}`,
-        title: song['Song Title'],
-        slug: titleToSlug(song['Song Title']),
-        duration: '--:--',
+        id: `${song['Album Directory']}-${song['Track Number']}`,
+        title: song.Title,
+        slug: song['Song Slug'],
+        duration: song.Duration || '--:--',
         description: '',
         tags: []
       }));
@@ -214,14 +225,14 @@ export async function getAllAlbums(): Promise<Album[]> {
     return {
       id: index + 1,
       title: albumTitle,
-      year: songs[0].Year,
+      year: '2024', // Year not in CSV - will need to add this later
       coverArt: getAlbumImageUrl(albumTitle, 'full'),
       description: '',
       tracks
     };
   });
 
-  return albums.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+  return albums;
 }
 
 export async function getAlbumById(id: string | number | undefined): Promise<Album | undefined> {
@@ -254,8 +265,8 @@ export async function getSongBySlug(slug: string): Promise<ProcessedSong | undef
     }
     
     const { content, songIndex } = await response.json();
-    const entry = songIndex.find((s: SongIndexEntry) => 
-      titleToSlug(s['Song Title']) === slug
+    const entry = songIndex.find((s: SongIndexEntry) =>
+      s['Song Slug'] === slug
     );
     
     if (!entry) {
@@ -306,8 +317,8 @@ export async function getNavigationData(currentSong: Song): Promise<{
   
   if (!currentAlbum) return { albumSongs: [], currentIndex: -1 };
 
-  const currentEntry = songIndex.find(s => 
-    titleToSlug(s['Song Title']) === currentSong.slug && 
+  const currentEntry = songIndex.find(s =>
+    s['Song Slug'] === currentSong.slug &&
     s.Album === currentAlbum.title
   );
 
@@ -319,11 +330,11 @@ export async function getNavigationData(currentSong: Song): Promise<{
     .filter(s => s.Album === currentEntry.Album)
     .sort((a, b) => parseInt(a['Track Number']) - parseInt(b['Track Number']))
     .map(entry => ({
-      id: `${albumToDirectoryName(entry.Album)}-${entry['Track Number']}`,
-      title: entry['Song Title'],
-      slug: titleToSlug(entry['Song Title']),
+      id: `${entry['Album Directory']}-${entry['Track Number']}`,
+      title: entry.Title,
+      slug: entry['Song Slug'],
       albumId: numericAlbumId,
-      duration: '--:--',
+      duration: entry.Duration || '--:--',
       description: '',
       hasLyrics: entry['Has Lyrics']
     }));
@@ -335,7 +346,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
 
   // Find previous song with lyrics
   for (let i = currentIdx - 1; i >= 0; i--) {
-    if (albumSongs[i].hasLyrics === 'Yes') {
+    if (albumSongs[i].hasLyrics === 'TRUE' || albumSongs[i].hasLyrics === 'Yes') {
       previous = albumSongs[i];
       break;
     }
@@ -343,7 +354,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
 
   // Find next song with lyrics
   for (let i = currentIdx + 1; i < albumSongs.length; i++) {
-    if (albumSongs[i].hasLyrics === 'Yes') {
+    if (albumSongs[i].hasLyrics === 'TRUE' || albumSongs[i].hasLyrics === 'Yes') {
       next = albumSongs[i];
       break;
     }
@@ -352,7 +363,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
   return {
     previous,
     next,
-    albumSongs: albumSongs.filter(song => song.hasLyrics === 'Yes'),
+    albumSongs: albumSongs.filter(song => song.hasLyrics === 'TRUE' || song.hasLyrics === 'Yes'),
     currentIndex: currentIdx
   };
 }

@@ -17,12 +17,13 @@ interface PageProps {
 }
 
 // Generate static params for all albums
-export async function generateStaticParams() {
-  const albums = await getAllAlbums();
-  return albums.map((album) => ({
-    id: album.id.toString(),
-  }));
-}
+// Disabled for now - will use dynamic rendering for MVP
+// export async function generateStaticParams() {
+//   const albums = await getAllAlbums();
+//   return albums.map((album) => ({
+//     id: album.id.toString(),
+//   }));
+// }
 
 // Metadata for the page
 export async function generateMetadata({ params }: PageProps) {

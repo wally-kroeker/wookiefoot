@@ -2,6 +2,7 @@ import { getSongBySlug, getAllSongs, getNavigationData, getSongUrl } from '@/lib
 import AlbumNavigation from '@/components/navigation/AlbumNavigation';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Background from '@/components/layout/Background';
 import type { Metadata } from 'next';
 
 interface PageProps {
@@ -10,12 +11,13 @@ interface PageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const songs = await getAllSongs();
-  return songs.map((song) => ({
-    slug: song.slug,
-  }));
-}
+// Disabled for MVP - using dynamic rendering instead
+// export async function generateStaticParams() {
+//   const songs = await getAllSongs();
+//   return songs.map((song) => ({
+//     slug: song.slug,
+//   }));
+// }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
@@ -40,13 +42,15 @@ export default async function Page({ params }: PageProps) {
   const song = await getSongBySlug(slug);
 
   if (!song) {
-    notFound();
+    // Pass the params to the not-found page
+    return notFound();
   }
 
   const { previous, next, albumSongs, currentIndex } = await getNavigationData(song);
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      <Background backgroundImage={song.backgroundImage || ''} />
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <Link
@@ -122,9 +126,9 @@ export default async function Page({ params }: PageProps) {
         </div>
 
         <div className="flex space-x-4">
-          {song.youtubeUrl && (
+          {song.media?.youtube?.url && (
             <a
-              href={song.youtubeUrl}
+              href={song.media.youtube.url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-red-600 hover:text-red-700"
@@ -135,9 +139,9 @@ export default async function Page({ params }: PageProps) {
               Watch on YouTube
             </a>
           )}
-          {song.spotifyUrl && (
+          {song.media?.spotify?.uri && (
             <a
-              href={song.spotifyUrl}
+              href={song.media.spotify.uri}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-green-600 hover:text-green-700"

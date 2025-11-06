@@ -36,13 +36,15 @@ export default function SearchBar() {
           type="text"
           className="
             block w-full rounded-lg 
-            bg-navy-900/50 
+            bg-black/40 backdrop-blur-sm
             py-3 pl-4 pr-12
             text-retro-paper placeholder:text-gray-400
-            border-2 border-accent-blue/20
-            focus:border-accent-blue/40 focus:ring-2 focus:ring-accent-blue/20
-            transition-colors duration-200
+            border-2 border-accent-teal/30
+            focus:border-accent-green/60 focus:ring-2 focus:ring-accent-green/30
+            focus:shadow-lg focus:shadow-accent-green/30
+            transition-all duration-300
             font-medium
+            hover:border-accent-teal/50
           "
           placeholder="Search lyrics..."
           value={query}
@@ -56,7 +58,7 @@ export default function SearchBar() {
         <div className="absolute inset-y-0 right-0 flex items-center pr-4">
           {isSearching ? (
             <svg
-              className="animate-spin h-5 w-5 text-accent-blue"
+              className="animate-spin h-5 w-5 text-accent-green"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -76,7 +78,7 @@ export default function SearchBar() {
               />
             </svg>
           ) : (
-            <SearchIcon className="h-5 w-5 text-accent-blue" />
+            <SearchIcon className="h-5 w-5 text-accent-teal animate-pulse" />
           )}
         </div>
       </div>
@@ -89,7 +91,7 @@ export default function SearchBar() {
               {results.map((result) => (
                 <li
                   key={`${result.type}-${result.id}`}
-                  className="cursor-pointer select-none px-4 py-2 hover:bg-navy-700/50 text-retro-paper"
+                  className="cursor-pointer select-none px-4 py-2 hover:bg-accent-green/20 text-retro-paper transition-all duration-300 hover:text-accent-orange"
                   onClick={() => {
                     router.push(result.url);
                     setQuery('');

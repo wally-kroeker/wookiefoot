@@ -9,10 +9,10 @@ export default async function LyricsPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <RetroCard variant="primary" className="p-8">
+      <RetroCard variant="primary" className="p-8 hover-lift">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">
-            <span className="text-retro-paper">WookieFoot</span>
+            <span className="text-retro-paper cosmic-glow">WookieFoot</span>
             <span className="text-gradient block mt-2">Lyrics Archive</span>
           </h1>
           <p className="text-lg text-retro-paper/80 max-w-2xl mx-auto">
@@ -28,12 +28,13 @@ export default async function LyricsPage() {
           <Link key={song.id} href={`/lyrics/${song.slug}`}>
             <RetroCard
               variant="secondary"
-              className="p-6 hover-lift group transition-all duration-300 hover:bg-navy-800/50"
+              className="p-6 hover-lift group transition-all duration-300 border-accent-teal/30 hover:border-accent-green/60"
             >
               <div className="space-y-4">
                 <div className="flex gap-4">
                   {song.albumCoverArt && (
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 relative group-hover:scale-105 transition-transform duration-300">
+                      <div className="absolute inset-0 bg-gradient-green-orange rounded-lg blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
                       <AlbumCover
                         albumArt={song.albumCoverArt}
                         title={song.albumTitle || ''}
@@ -42,7 +43,7 @@ export default async function LyricsPage() {
                     </div>
                   )}
                   <div>
-                    <h2 className="text-xl font-bold text-retro-paper group-hover:text-gradient">
+                    <h2 className="text-xl font-bold text-retro-paper group-hover:text-gradient transition-all duration-300">
                       {song.title}
                     </h2>
                     {song.albumTitle && (
@@ -64,7 +65,7 @@ export default async function LyricsPage() {
                     {song.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 text-xs rounded-full bg-navy-800 text-retro-paper/60"
+                        className="px-2 py-1 text-xs rounded-full bg-accent-green/20 text-retro-paper/80 border border-accent-green/30"
                       >
                         #{tag}
                       </span>
@@ -73,11 +74,11 @@ export default async function LyricsPage() {
                 )}
 
                 {/* Footer */}
-                <div className="flex justify-between items-center pt-4 border-t border-accent-blue/20">
+                <div className="flex justify-between items-center pt-4 border-t border-accent-teal/30">
                   <span className="text-sm text-retro-paper/60">
                     {song.duration}
                   </span>
-                  <span className="text-accent-blue group-hover:text-accent-pink transition-colors duration-300">
+                  <span className="text-accent-green group-hover:text-accent-orange transition-colors duration-300">
                     View Lyrics →
                   </span>
                 </div>
@@ -88,12 +89,12 @@ export default async function LyricsPage() {
       </div>
 
       {/* Call to Action */}
-      <RetroCard variant="secondary" className="p-6 text-center">
+      <RetroCard variant="secondary" className="p-6 text-center hover-lift">
         <p className="text-retro-paper/80">
           Can't find what you're looking for?{' '}
           <Link
             href="/search"
-            className="text-accent-blue hover:text-accent-pink transition-colors duration-300"
+            className="text-accent-green hover:text-accent-orange transition-colors duration-300 font-semibold"
           >
             Try searching our complete lyrics archive
           </Link>

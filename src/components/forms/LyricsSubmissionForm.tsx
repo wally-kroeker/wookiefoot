@@ -81,7 +81,7 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
     }
   };
 
-  const inputClasses = "w-full px-3 py-2 bg-gray-700/90 border border-accent-blue/20 rounded focus:outline-none focus:border-accent-blue/40 text-retro-paper placeholder-retro-paper/50";
+  const inputClasses = "w-full px-3 py-2 bg-gray-700/90 border border-accent-green/20 rounded focus:outline-none focus:border-accent-green/40 text-retro-paper placeholder-retro-paper/50";
 
   return (
     <RetroCard variant="secondary" className="w-full p-6">

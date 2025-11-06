@@ -34,19 +34,20 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <RetroCard variant="primary" className="mt-12 mx-4">
+    <RetroCard variant="primary" className="mt-12 mx-4 border-accent-green/40">
       <footer className="p-8">
         <div className="max-w-7xl mx-auto">
           {/* Navigation */}
-          <div className="pb-8 mb-8 border-b border-accent-blue/20">
+          <div className="pb-8 mb-8 border-b border-gradient-green-orange border-opacity-30">
             <nav className="flex flex-wrap justify-center gap-6">
               {navigation.main.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-retro-paper/80 hover:text-accent-blue transition-colors duration-200"
+                  className="text-retro-paper/80 hover:text-accent-orange transition-all duration-300 hover:scale-110 relative group"
                 >
                   {item.name}
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-green-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </Link>
               ))}
             </nav>
@@ -58,7 +59,7 @@ export default function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-retro-paper/60 hover:text-accent-blue transition-colors duration-200"
+                className="text-retro-paper/60 hover:text-accent-orange transition-all duration-300 hover:scale-125"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -71,7 +72,8 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center text-retro-paper/60">
             <p className="text-sm">
-              © {new Date().getFullYear()} WookieFoot Lyrics. Fan-made with love.
+              © {new Date().getFullYear()} WookieFoot Lyrics. Fan-made with{' '}
+              <span className="text-accent-orange">love</span>.
             </p>
             <p className="text-xs mt-2">
               All lyrics and content are property of their respective owners.
@@ -79,10 +81,10 @@ export default function Footer() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute left-8 bottom-8 text-accent-pink/20 text-4xl animate-float-slow hidden lg:block">
+          <div className="absolute left-8 bottom-8 text-accent-green/30 text-4xl animate-float-slow hidden lg:block">
             ♪
           </div>
-          <div className="absolute right-8 bottom-12 text-accent-blue/20 text-3xl animate-float-medium hidden lg:block">
+          <div className="absolute right-8 bottom-12 text-accent-teal/30 text-3xl animate-float-medium hidden lg:block">
             ♫
           </div>
         </div>

@@ -13,10 +13,10 @@ export default async function AlbumsPage() {
   return (
     <div className="space-y-12">
       {/* Header */}
-      <RetroCard variant="primary" className="p-8">
+      <RetroCard variant="primary" className="p-8 hover-lift">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">
-            <span className="text-retro-paper">WookieFoot</span>
+            <span className="text-retro-paper cosmic-glow">WookieFoot</span>
             <span className="text-gradient block mt-2">Albums</span>
           </h1>
           <p className="text-lg text-retro-paper/80 max-w-2xl mx-auto">
@@ -37,12 +37,12 @@ export default async function AlbumsPage() {
       {albums.length > 0 && <FeaturedAlbum album={albums[0]} />}
 
       {/* Call to Action */}
-      <RetroCard variant="secondary" className="p-6 text-center">
+      <RetroCard variant="secondary" className="p-6 text-center hover-lift">
         <p className="text-retro-paper/80">
           Can't find what you're looking for?{' '}
           <Link
             href="/search"
-            className="text-accent-blue hover:text-accent-pink transition-colors duration-300"
+            className="text-accent-green hover:text-accent-orange transition-colors duration-300 font-semibold"
           >
             Try searching our complete lyrics archive
           </Link>

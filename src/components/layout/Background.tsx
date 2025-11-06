@@ -7,17 +7,31 @@ interface BackgroundProps {
 }
 
 export default function Background({ backgroundImage }: BackgroundProps) {
+  // Use the high-res background image if available, otherwise use default
+  const bgImage = backgroundImage || '/assets/backgrounds/you-re-it.jpg';
+  
   return (
-    <div
-      className="fixed inset-0 -z-10 overflow-hidden bg-black"
-      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' } : {}}
-    >
-      {/* Noise overlay */}
-      <div className="absolute inset-0 bg-noise opacity-5" />
-
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />
-    </div>
+    <>
+      {/* Fixed high-resolution background with parallax effect */}
+      <div 
+        className="fixed inset-0 -z-10 bg-black"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
+      {/* Softer overlay for readability */}
+      <div className="fixed inset-0 -z-10 bg-black/50" />
+      
+      {/* Subtle gradient overlay with warmer tones */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-transparent via-black/30 to-black/60" />
+      
+      {/* Subtle vignette effect */}
+      <div className="fixed inset-0 -z-10 bg-gradient-radial from-transparent via-transparent to-black/40" />
+    </>
   );
 }

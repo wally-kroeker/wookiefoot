@@ -49,10 +49,10 @@ export default async function NotFound({ params }: NotFoundProps) {
 
           {/* Cassette tape illustration */}
           <div className="relative w-48 h-24 mx-auto my-8">
-            <div className="absolute inset-0 bg-navy-800/80 rounded-lg border-2 border-accent-blue/20">
-              <div className="absolute inset-x-8 top-4 h-16 border-2 border-accent-blue/30 rounded">
+            <div className="absolute inset-0 bg-navy-800/80 rounded-lg border-2 border-accent-green/20">
+              <div className="absolute inset-x-8 top-4 h-16 border-2 border-accent-green/30 rounded">
                 <div className="absolute inset-4 flex justify-center items-center">
-                  <div className="w-8 h-8 rounded-full border-2 border-accent-blue/20 animate-spin-slow" />
+                  <div className="w-8 h-8 rounded-full border-2 border-accent-green/20 animate-spin-slow" />
                 </div>
               </div>
             </div>
@@ -78,10 +78,10 @@ export default async function NotFound({ params }: NotFoundProps) {
           </div>
 
           {/* Decorative music notes */}
-          <div className="absolute left-12 top-1/3 text-accent-pink/20 text-6xl animate-float-slow hidden lg:block">
+          <div className="absolute left-12 top-1/3 text-accent-orange/20 text-6xl animate-float-slow hidden lg:block">
             ♪
           </div>
-          <div className="absolute right-12 bottom-1/3 text-accent-blue/20 text-4xl animate-float-medium hidden lg:block">
+          <div className="absolute right-12 bottom-1/3 text-accent-green/20 text-4xl animate-float-medium hidden lg:block">
             ♫
           </div>
         </div>

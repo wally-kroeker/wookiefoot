@@ -29,11 +29,69 @@
 
   /* Link styles */
   a {
-    @apply text-blue-400 hover:text-blue-300;
+    @apply transition-colors duration-300;
+    color: #6BCB77; /* accent-green-light */
+  }
+  a:hover {
+    color: #F59E0B; /* accent-orange-light */
   }
 
-  /* Button styles */
+  /* Button styles - Earthy themed */
   .btn-retro {
-    @apply bg-gray-800 text-white hover:bg-gray-700;
+    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300 text-white;
+    background: linear-gradient(135deg, #4A9B5A 0%, #D97706 100%);
+    border: 1px solid rgba(74, 155, 90, 0.3);
+    box-shadow: 0 4px 12px rgba(74, 155, 90, 0.2);
+  }
+  .btn-retro:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(74, 155, 90, 0.4);
+    border-color: rgba(217, 119, 6, 0.5);
+    background: linear-gradient(135deg, #5AAB6A 0%, #E98716 100%);
+  }
+  .btn-retro:active {
+    transform: scale(0.98);
+  }
+}
+
+@layer components {
+  /* Text gradient effect */
+  .text-gradient {
+    background: linear-gradient(135deg, #4A9B5A 0%, #D97706 25%, #92400E 50%, #14B8A6 75%, #4A9B5A 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: cosmic-shift 8s ease infinite;
+  }
+
+  /* Earthy glow effect - subtle */
+  .cosmic-glow {
+    text-shadow: 0 0 15px rgba(74, 155, 90, 0.4),
+                 0 0 30px rgba(217, 119, 6, 0.2);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-105 hover:-translate-y-1;
+  }
+
+  /* Subtle earthy glow - removed, using simpler shadows */
+}
+
+@layer utilities {
+  /* Starfield background pattern */
+  .starfield {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 60px 70px, rgba(255, 20, 147, 0.3), transparent),
+      radial-gradient(1px 1px at 50px 50px, rgba(0, 217, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 80px 10px, rgba(57, 255, 20, 0.3), transparent),
+      radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(139, 47, 201, 0.3), transparent),
+      radial-gradient(1px 1px at 160px 30px, rgba(255, 20, 147, 0.2), transparent);
+    background-size: 200px 100px;
+    animation: star-twinkle 4s ease-in-out infinite;
   }
 }

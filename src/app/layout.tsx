@@ -57,13 +57,10 @@ export default function RootLayout({
             </div>
           </main>
 
-          {/* Footer */}
-          <Footer />
-        </div>
-
-        {/* Overlay gradient for depth */}
-        <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-navy-900/80 to-transparent" />
-      </body>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </body>
     </html>
   );
 }

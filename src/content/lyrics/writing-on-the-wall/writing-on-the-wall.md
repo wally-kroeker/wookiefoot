@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Writing On The Wall by WookieFoot
 id: writing-on-the-wall
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Writing On The Wall
 trackNumber: '5'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 (Intro)

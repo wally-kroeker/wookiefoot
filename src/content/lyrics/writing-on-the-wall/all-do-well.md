@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for All Do Well by WookieFoot
 id: all-do-well
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: All Do Well
 trackNumber: '9'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 (Intro)

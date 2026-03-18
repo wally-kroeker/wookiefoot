@@ -1,16 +1,16 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Brainwash by WookieFoot
 id: brainwash
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Brainwash
 trackNumber: '5'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 [Intro]

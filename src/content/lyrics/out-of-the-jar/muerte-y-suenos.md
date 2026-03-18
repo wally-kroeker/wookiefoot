@@ -1,16 +1,16 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Muerte y Suenos by WookieFoot
 id: muerte-y-suenos
-spotifyUrl: https://open.spotify.com/track/2LQTiJAen8i06buiG6AhRX
 tags:
-- lyrics
+  - lyrics
 title: Muerte y Suenos
 trackNumber: '1'
-youtubeUrl: https://music.youtube.com/watch?v=K052EURqwes&list=OLAK5uy_kKM24r8tii9XzbCyvVkCgV8mV73FSQ6RQ
+youtubeUrl: >-
+  https://music.youtube.com/watch?v=K052EURqwes&list=OLAK5uy_kKM24r8tii9XzbCyvVkCgV8mV73FSQ6RQ
 ---
 
 I really can't stay (but baby, it's cold outside)

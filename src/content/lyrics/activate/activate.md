@@ -5,7 +5,6 @@ slug: activate
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

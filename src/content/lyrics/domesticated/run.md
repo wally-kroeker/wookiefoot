@@ -1,19 +1,20 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Run by WookieFoot
 id: run
-spotifyUrl: https://open.spotify.com/track/2XjupkwNONJgKN7VXQGd0M
 tags:
-- lyrics
+  - lyrics
 title: Run
 trackNumber: '14'
-youtubeUrl: https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM
+youtubeUrl: 'https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM'
+sourceUrl: 'https://wookiefoot.com/track/2872649/run'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
-python scripts/lyricsaz_fetcher.py
+Lyrics
 I gotta run I gotta run again
 
 I gotta run I gotta run again
@@ -40,7 +41,7 @@ I gotta run I gotta run again
 
 I hear that noise again i hear that voice again
 
-I better get leaving soon it’s true i have no choice again
+I better get leaving soon it’s true  i have no choice again
 
 It’s the time again, to find your mind again
 

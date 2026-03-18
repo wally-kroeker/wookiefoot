@@ -1,16 +1,15 @@
 ---
 albumId: activate
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Talking Boy by WookieFoot
 id: talking-boy
-spotifyUrl: https://open.spotify.com/track/3HBwBGynRpq83Kpyo8J3ZI
 tags:
-- lyrics
+  - lyrics
 title: Talking Boy
 trackNumber: '28'
-youtubeUrl: https://music.youtube.com/watch?v=6JT4M2asFKI&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=6JT4M2asFKI&list=RDAOrjA6cttNfONQIe1vu50Cwg'
 ---
 
 Here’s to the grass that grows through the

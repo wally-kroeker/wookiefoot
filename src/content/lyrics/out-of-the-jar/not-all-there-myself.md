@@ -1,16 +1,15 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Not all there Myself by WookieFoot
 id: not-all-there-myself
-spotifyUrl: https://open.spotify.com/track/2HNKbLB7gYyLHUqlUvQi6F
 tags:
-- lyrics
+  - lyrics
 title: Not all there Myself
 trackNumber: '10'
-youtubeUrl: https://music.youtube.com/watch?v=oeGjK-7eepk&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=oeGjK-7eepk&list=RDAOrjA6cttNfONQIe1vu50Cwg'
 ---
 
 You may have noticed that I'm not all there myself...

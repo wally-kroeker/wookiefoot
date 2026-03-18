@@ -1,21 +1,23 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Flowers by WookieFoot
 id: flowers
-spotifyUrl: https://open.spotify.com/track/3Cvc17qjbZOiyBZ6TALlzn
 tags:
-- lyrics
+  - lyrics
 title: Flowers
 trackNumber: '16'
-youtubeUrl: https://music.youtube.com/watch?v=NRhywnJez3o&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=NRhywnJez3o&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872651/flowers'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 Well I already got to much sh&t i should just be counting my blessing
 
-I'm messing with matches burnt another lesson got learned
+I’m messing with matches burnt another lesson got learned
 
 So if you tired and your pages just keep turning
 
@@ -23,15 +25,15 @@ You should be paying attention to what this message is concerning
 
 Discerning the difference between the unforeseen obscene and a yearning that's clean
 
-So be careful what you need because the greed will rob you of your power and don't pick the flowers
+So be careful what you need because the greed will rob you of your power and don’t pick the flowers
 
-I beg you please don't pick the flowers
+I beg you please don’t pick the flowers
 
-You know it's only just a matter of time
+You know it’s only just a matter of time
 
-I'm begging you please don't pick the flowers
+I’m begging you please don’t pick the flowers
 
-She's only gonna wilt and die oh my
+She’s only gonna wilt and die oh my
 
 Back up off me and smell the coffee
 
@@ -47,9 +49,9 @@ But your type of style just drives me crazy
 
 The man of the hour the man with the power
 
-And if you don't mind don't pick my flower
+And if you don’t mind don’t pick my flower
 
-I'm asking you please don't pick the flowers
+I’m asking you please don’t pick the flowers
 
 Hey why you always running around domesticating my chickens anyway
 
@@ -61,6 +63,6 @@ Oh the safety that the cage must bring
 
 Your better off just clipping its wings
 
-yeah that'll do your possessions possess you
+yeah that’ll do your possessions possess you
 
-I'm asking you please don't pick the flowers
+I’m asking you please don’t pick the flowers

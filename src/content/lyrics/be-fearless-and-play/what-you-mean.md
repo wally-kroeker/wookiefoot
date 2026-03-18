@@ -5,7 +5,6 @@ slug: what-you-mean
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

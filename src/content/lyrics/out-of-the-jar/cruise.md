@@ -1,20 +1,22 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Cruise by WookieFoot
 id: cruise
-spotifyUrl: https://open.spotify.com/track/4n9AgJipjxbmzks6f5LAZq
 tags:
-- lyrics
+  - lyrics
 title: Cruise
 trackNumber: '17'
-youtubeUrl: https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM
+youtubeUrl: 'https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM'
+sourceUrl: 'https://wookiefoot.com/track/2872609/cruise'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 If you’ve got a lust of wander
-and nerves of steel
+and nerves of steel 
 If you’ve got a craving for adventure,
 man I got the deal
 If you don’t mind roughing it

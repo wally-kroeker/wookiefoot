@@ -5,7 +5,6 @@ slug: blue-sky
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

@@ -1,18 +1,20 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Wrong Note by WookieFoot
 id: wrong-note
-spotifyUrl: https://open.spotify.com/track/7nEGZ4oIqlUdW2lYWsEnCE
 tags:
-- lyrics
+  - lyrics
 title: Wrong Note
 trackNumber: '18'
-youtubeUrl: https://music.youtube.com/watch?v=4kHL-M1A4-c&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=4kHL-M1A4-c&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872610/wrong-note'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 There’s a note that’s not right in this song
 And every time it comes around it always seems to bring me down
 And everyday I hope and pray that God will make it go away

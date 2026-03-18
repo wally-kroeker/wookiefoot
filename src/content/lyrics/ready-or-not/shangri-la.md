@@ -1,16 +1,17 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Shangri-La by WookieFoot
 id: shangri-la
-spotifyUrl: https://open.spotify.com/track/34B9Qb4Ju5iqp78zhVnv6X?si=98BKwBjbQ-CNKFejOYSnaQ
 tags:
-- lyrics
+  - lyrics
 title: Shangri-La
 trackNumber: '8'
-youtubeUrl: https://music.youtube.com/watch?v=IF3AHP8VRMM&list=PL2f_nCszikPxUDnJRq0fGmLzS78Sh8cxA
+youtubeUrl: >-
+  https://music.youtube.com/watch?v=IF3AHP8VRMM&list=PL2f_nCszikPxUDnJRq0fGmLzS78Sh8cxA
+youtubeVideoId: PLACEHOLDER
 ---
 
 It's a leap of faith it's just a leap of faith

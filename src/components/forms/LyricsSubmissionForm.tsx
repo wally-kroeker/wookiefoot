@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { RetroCard } from '@/components/ui/RetroCard';
-import type { LyricsSubmission } from '@/types/lyrics-submission';
+import WFCard from '@/components/ui/WFCard';
 
 interface FormState {
   isSubmitting: boolean;
@@ -16,7 +15,7 @@ interface LyricsSubmissionFormProps {
 }
 
 export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmissionFormProps) {
-  const [formData, setFormData] = useState<LyricsSubmission>({
+  const [formData, setFormData] = useState({
     songTitle,
     albumName,
     lyrics: '',
@@ -29,8 +28,7 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
     if (!formData.lyrics.trim()) {
       setFormState({ isSubmitting: false, error: 'Lyrics are required' });
       return;
@@ -49,9 +47,7 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
     try {
       const response = await fetch('/api/lyrics-submission', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -65,14 +61,8 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
         isSubmitting: false,
         success: 'Thank you! Your lyrics submission has been received.',
       });
-      
-      // Reset form except for song title and album
-      setFormData({
-        songTitle,
-        albumName,
-        lyrics: '',
-        submitterEmail: '',
-      });
+
+      setFormData({ songTitle, albumName, lyrics: '', submitterEmail: '' });
     } catch (error) {
       setFormState({
         isSubmitting: false,
@@ -81,56 +71,56 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
     }
   };
 
-  const inputClasses = "w-full px-3 py-2 bg-gray-700/90 border border-accent-green/20 rounded focus:outline-none focus:border-accent-green/40 text-retro-paper placeholder-retro-paper/50";
+  const inputClasses = "w-full px-3 py-2 bg-bg-secondary border border-border-subtle rounded-lg focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 text-text-primary placeholder-text-muted";
 
   return (
-    <RetroCard variant="secondary" className="w-full p-6">
+    <WFCard className="w-full">
       <div className="space-y-4">
-        <h2 className="text-xl font-bold text-retro-paper text-center mb-6">
+        <h2 className="text-xl font-display text-text-primary text-center mb-6">
           Submit Missing Lyrics
         </h2>
 
         {formState.error && (
-          <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded text-sm">
+          <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-lg text-sm">
             {formState.error}
           </div>
         )}
 
         {formState.success && (
-          <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-3 rounded text-sm">
+          <div className="bg-green-50 border border-green-200 text-green-700 p-3 rounded-lg text-sm">
             {formState.success}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="songTitle" className="block text-sm font-medium text-retro-paper/80 mb-1">
+            <label htmlFor="songTitle" className="block text-sm font-medium text-text-secondary mb-1">
               Song Title
             </label>
             <input
               type="text"
               id="songTitle"
               value={formData.songTitle}
-              className={`${inputClasses} bg-gray-800/90`}
+              className={inputClasses}
               onChange={(e) => setFormData({ ...formData, songTitle: e.target.value })}
             />
           </div>
 
           <div>
-            <label htmlFor="albumName" className="block text-sm font-medium text-retro-paper/80 mb-1">
+            <label htmlFor="albumName" className="block text-sm font-medium text-text-secondary mb-1">
               Album Name
             </label>
             <input
               type="text"
               id="albumName"
               value={formData.albumName}
-              className={`${inputClasses} bg-gray-800/90`}
+              className={inputClasses}
               onChange={(e) => setFormData({ ...formData, albumName: e.target.value })}
             />
           </div>
 
           <div>
-            <label htmlFor="submitterEmail" className="block text-sm font-medium text-retro-paper/80 mb-1">
+            <label htmlFor="submitterEmail" className="block text-sm font-medium text-text-secondary mb-1">
               Your Email *
             </label>
             <input
@@ -144,7 +134,7 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
           </div>
 
           <div>
-            <label htmlFor="lyrics" className="block text-sm font-medium text-retro-paper/80 mb-1">
+            <label htmlFor="lyrics" className="block text-sm font-medium text-text-secondary mb-1">
               Lyrics *
             </label>
             <textarea
@@ -159,12 +149,12 @@ export function LyricsSubmissionForm({ songTitle, albumName = '' }: LyricsSubmis
           <button
             type="submit"
             disabled={formState.isSubmitting}
-            className="w-full btn-retro disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formState.isSubmitting ? 'Submitting...' : 'Submit Lyrics'}
           </button>
         </form>
       </div>
-    </RetroCard>
+    </WFCard>
   );
 }

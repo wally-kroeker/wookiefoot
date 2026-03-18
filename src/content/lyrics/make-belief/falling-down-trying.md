@@ -5,49 +5,33 @@ slug: falling-down-trying
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
+sourceUrl: 'https://wookiefoot.com/track/2872624/falling-down-trying'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 are you falling down drunk are you falling down trying
 do you walk with the sheep do you roar with the lion
 are you singing your war cry or are you just crying
-if i'm not falling down drunk i'll be falling down trying
-my old friend mick mcquire was the best man alive
+if I’m not falling down drunk I’ll be falling down trying
 
-till he traded in his sprit at the age of 25
-
+my old friend mick McGuire was the best man alive
+till he traded in his spirit at the age of 25
 now he hits from the bog as he sits on the floor
-
-and he scored a lot of points on his nintendo 64
-
-
+and he scored a lot of points on his Nintendo 64
 
 is the right to remain silent all you want? (hell no!)
-
 is the television thinking all your thought? (hell no!)
-
-is a man only worth what he's bought? (hell no!)
-
+is a man only worth what he’s bought? (hell no!)
 is the right to remain silent all you got? (hell no!)
 
-
-
-i can't believe you're reading all these lyrics
-
+i can’t believe you’re reading all these lyrics
 thank you for taking the time we love you
 
-
-
-my good friend michael conner at the age of 24
-
+my good friend Michael Conner at the age of 24
 had sold himself to slavery to the ugly corporate whore
-
-i don't know if its wrong but it doesn't feel right
-
+i don’t know if its wrong but it doesn’t feel right
 to be in your Warrior Years and not looking for a fight
-
-
-
-i'll scream it with Jah at the top of mt zion
+I'll scream it with Jah at the top of Mt. Zion

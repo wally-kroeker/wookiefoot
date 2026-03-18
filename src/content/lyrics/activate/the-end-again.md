@@ -1,16 +1,15 @@
 ---
 albumId: activate
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for The End Again by WookieFoot
 id: the-end-again
-spotifyUrl: https://open.spotify.com/track/6GTzynsad9aIleUkaEY582
 tags:
-- lyrics
+  - lyrics
 title: The End Again
 trackNumber: '17'
-youtubeUrl: https://music.youtube.com/watch?v=t3753XV7f1U&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=t3753XV7f1U&list=RDAOrjA6cttNfONQIe1vu50Cwg'
 ---
 
 

@@ -5,7 +5,6 @@ slug: shade
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

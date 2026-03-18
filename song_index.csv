@@ -5,20 +5,20 @@ Be Fearless and Play,3,Monkey See Monkey Do,monkey-see-monkey-do,TRUE,be-fearles
 Be Fearless and Play,4,Crack In The Dam,crack-in-the-dam,TRUE,be-fearless-and-play,2:44
 Be Fearless and Play,5,Original Sin,original-sin,TRUE,be-fearless-and-play,3:01
 Be Fearless and Play,6,Always Is,always-is,TRUE,be-fearless-and-play,2:52
-Be Fearless and Play,7,Don't Should On Me,dont-should-on-me,FALSE,be-fearless-and-play,2:48
+Be Fearless and Play,7,Don't Should On Me,dont-should-on-me,TRUE,be-fearless-and-play,2:48
 Be Fearless and Play,8,Blue Sky,blue-sky,TRUE,be-fearless-and-play,3:06
 Be Fearless and Play,9,At Last,at-last,TRUE,be-fearless-and-play,3:28
 Be Fearless and Play,10,All Together,all-together,TRUE,be-fearless-and-play,3:53
 Be Fearless and Play,11,Home Free,home-free,TRUE,be-fearless-and-play,2:49
-Be Fearless and Play,12,The Thing,the-thing,FALSE,be-fearless-and-play,2:52
+Be Fearless and Play,12,The Thing,the-thing,TRUE,be-fearless-and-play,2:52
 Be Fearless and Play,13,Shade,shade,TRUE,be-fearless-and-play,4:04
 Be Fearless and Play,14,What You Mean,what-you-mean,TRUE,be-fearless-and-play,2:40
-Be Fearless and Play,15,Rumi,rumi,FALSE,be-fearless-and-play,0:50
-Be Fearless and Play,16,Extra,extra,FALSE,be-fearless-and-play,2:02
-Domesticated,1,Intro,intro,FALSE,domesticated,0:25
+Be Fearless and Play,15,Rumi,be-fearless-and-play-rumi,TRUE,be-fearless-and-play,0:50
+Be Fearless and Play,16,Extra,extra,TRUE,be-fearless-and-play,2:02
+Domesticated,1,Intro,domesticated-intro,TRUE,domesticated,0:25
 Domesticated,2,Grow Up,grow-up,TRUE,domesticated,3:37
 Domesticated,3,Mushroom Jazz,mushroom-jazz,TRUE,domesticated,3:28
-Domesticated,4,Nothing & The Monkey,nothing-the-monkey,FALSE,domesticated,0:37
+Domesticated,4,Nothing & The Monkey,nothing-the-monkey,TRUE,domesticated,0:37
 Domesticated,5,Settle Down,settle-down,TRUE,domesticated,3:24
 Domesticated,6,Mayonnaise,mayonnaise,TRUE,domesticated,5:17
 Domesticated,7,Bastard Of Babylon,bastard-of-babylon,TRUE,domesticated,3:35
@@ -27,16 +27,16 @@ Domesticated,9,Have To Laugh,have-to-laugh,TRUE,domesticated,4:36
 Domesticated,10,Nothing,nothing,TRUE,domesticated,2:47
 Domesticated,11,Out Loud,out-loud,TRUE,domesticated,4:51
 Domesticated,12,Plead Insanity,plead-insanity,TRUE,domesticated,5:00
-Domesticated,13,Spiritual Lies,spiritual-lies,FALSE,domesticated,4:23
+Domesticated,13,Spiritual Lies,spiritual-lies,TRUE,domesticated,4:23
 Domesticated,14,Run,run,TRUE,domesticated,3:46
-Domesticated,15,The End,the-end,FALSE,domesticated,0:44
+Domesticated,15,The End,the-end,TRUE,domesticated,0:44
 Domesticated,16,Flowers,flowers,TRUE,domesticated,4:31
-Domesticated,17,Can't Get A Job,cant-get-a-job,FALSE,domesticated,4:02
+Domesticated,17,Can't Get A Job,cant-get-a-job,TRUE,domesticated,4:02
 Domesticated,18,Far From Good,far-from-good,TRUE,domesticated,3:00
 Domesticated,19,Scream,scream,TRUE,domesticated,3:06
 Domesticated,20,The Fog,the-fog,TRUE,domesticated,2:50
 Domesticated,21,Always Right,always-right,TRUE,domesticated,3:36
-Domesticated,22,Rumi,rumi,FALSE,domesticated,0:40
+Domesticated,22,Rumi,domesticated-rumi,TRUE,domesticated,0:40
 Make Belief,1,All You Can Eat,all-you-can-eat,TRUE,make-belief,3:50
 Make Belief,2,Overboard,overboard,TRUE,make-belief,3:13
 Make Belief,3,Enough,enough,TRUE,make-belief,3:39
@@ -44,46 +44,46 @@ Make Belief,4,Make Believe,make-believe,TRUE,make-belief,3:48
 Make Belief,5,High Is High,high-is-high,TRUE,make-belief,3:26
 Make Belief,6,All The Kings Horses,all-the-kings-horses,TRUE,make-belief,3:23
 Make Belief,7,Not Sees,not-sees,TRUE,make-belief,5:03
-Make Belief,8,OPB,opb,TRUE,make-belief,2:51
+Make Belief,8,OP8,op8,TRUE,make-belief,2:51
 Make Belief,9,Nod My Head,nod-my-head,TRUE,make-belief,3:31
 Make Belief,10,Falling Down Trying,falling-down-trying,TRUE,make-belief,2:26
 Make Belief,11,John Henry,john-henry,TRUE,make-belief,4:12
 Make Belief,12,Out Of My Way,out-of-my-way,TRUE,make-belief,4:42
 Make Belief,13,Roommate,roommate,TRUE,make-belief,2:54
 Make Belief,14,Get Down,get-down,TRUE,make-belief,4:48
-Make Belief,15,Ghost In The Machine,ghost-in-the-machine,FALSE,make-belief,4:43
+Make Belief,15,Ghost In The Machine,ghost-in-the-machine,TRUE,make-belief,4:43
 Out of the Jar,1,Muerte y Suenos,muerte-y-suenos,TRUE,out-of-the-jar,1:20
-Out of the Jar,2,The Frog & The Scorpion,the-frog-the-scorpion,FALSE,out-of-the-jar,4:15
+Out of the Jar,2,The Frog & The Scorpion,the-frog-the-scorpion,TRUE,out-of-the-jar,4:15
 Out of the Jar,3,This is Not a Test,this-is-not-a-test,TRUE,out-of-the-jar,1:52
 Out of the Jar,4,So Right Here,so-right-here,TRUE,out-of-the-jar,2:46
 Out of the Jar,5,Let Her Go,let-her-go,TRUE,out-of-the-jar,2:16
 Out of the Jar,6,Out of the Jar,out-of-the-jar,TRUE,out-of-the-jar,2:18
 Out of the Jar,7,She Sells,she-sells,TRUE,out-of-the-jar,3:41
-Out of the Jar,8,Don't Listen,dont-listen,FALSE,out-of-the-jar,3:06
+Out of the Jar,8,Don't Listen,dont-listen,TRUE,out-of-the-jar,3:06
 Out of the Jar,9,Kegger,kegger,TRUE,out-of-the-jar,4:32
 Out of the Jar,10,Not all there Myself,not-all-there-myself,TRUE,out-of-the-jar,1:24
 Out of the Jar,11,Ambition Less,ambition-less,TRUE,out-of-the-jar,2:39
 Out of the Jar,12,The Snake Catcher,the-snake-catcher,TRUE,out-of-the-jar,2:48
 Out of the Jar,13,Backbone,backbone,TRUE,out-of-the-jar,4:42
 Out of the Jar,14,Put it Down,put-it-down,TRUE,out-of-the-jar,3:39
-Out of the Jar,15,Untitled,untitled,FALSE,out-of-the-jar,1:04
-Out of the Jar,16,Wild in the Fields,wild-in-the-fields,FALSE,out-of-the-jar,1:31
+Out of the Jar,15,Untitled,untitled,TRUE,out-of-the-jar,1:04
+Out of the Jar,16,Wild in the Fields,wild-in-the-fields,TRUE,out-of-the-jar,1:31
 Out of the Jar,17,Cruise,cruise,TRUE,out-of-the-jar,3:22
 Out of the Jar,18,Wrong Note,wrong-note,TRUE,out-of-the-jar,2:39
-Out of the Jar,19,Bonus,bonus,FALSE,out-of-the-jar,3:28
-Ready or Not...,1,Captain's Log (Intro),captains-log-intro,FALSE,ready-or-not,0:27
+Out of the Jar,19,Bonus,bonus,TRUE,out-of-the-jar,3:28
+Ready or Not...,1,Captain's Log (Intro),captains-log-intro,TRUE,ready-or-not,0:27
 Ready or Not...,2,Ready or Not,ready-or-not,TRUE,ready-or-not,3:42
 Ready or Not...,3,Earthling,earthling,TRUE,ready-or-not,3:57
 Ready or Not...,4,Just Visiting,just-visiting,TRUE,ready-or-not,3:52
 Ready or Not...,5,Brainwash,brainwash,TRUE,ready-or-not,3:50
 Ready or Not...,6,Lose Your Mind,lose-your-mind,TRUE,ready-or-not,0:09
-Ready or Not...,7,Don't Stop!,dont-stop,FALSE,ready-or-not,3:06
+Ready or Not...,7,Don't Stop!,dont-stop,TRUE,ready-or-not,3:06
 Ready or Not...,8,Shangri-La,shangri-la,TRUE,ready-or-not,3:11
-Ready or Not...,9,Let Yourself Go,let-yourself-go,FALSE,ready-or-not,3:03
+Ready or Not...,9,Let Yourself Go,let-yourself-go,TRUE,ready-or-not,3:03
 Ready or Not...,10,Sweet Silence,sweet-silence,TRUE,ready-or-not,3:27
-Ready or Not...,11,Us & Them,us-them,FALSE,ready-or-not,3:36
+Ready or Not...,11,Us & Them,us-them,TRUE,ready-or-not,3:36
 Ready or Not...,12,Tomorrow,tomorrow,TRUE,ready-or-not,2:36
-Ready or Not...,13,Rumi,rumi,FALSE,ready-or-not,1:03
+Ready or Not...,13,Rumi,ready-or-not-rumi,TRUE,ready-or-not,1:03
 Writing on the Wall,1,Happy to Be Here,happy-to-be-here,TRUE,writing-on-the-wall,3:55
 Writing on the Wall,2,All Over Again,all-over-again,TRUE,writing-on-the-wall,3:53
 Writing on the Wall,3,The Great Unknown,the-great-unknown,TRUE,writing-on-the-wall,4:14
@@ -96,51 +96,51 @@ Writing on the Wall,9,All Do Well,all-do-well,TRUE,writing-on-the-wall,3:39
 Writing on the Wall,10,Small But Fierce,small-but-fierce,TRUE,writing-on-the-wall,4:32
 Writing on the Wall,11,Solstice,solstice,TRUE,writing-on-the-wall,3:19
 Writing on the Wall,12,A Great and Unlikely Story,a-great-and-unlikely-story,TRUE,writing-on-the-wall,0:51
-You're It!,1,Intro...,intro,FALSE,youre-it,0:23
+You're It!,1,Intro...,youre-it-intro,TRUE,youre-it,0:23
 You're It!,2,Who Are You?,who-are-you,TRUE,youre-it,3:55
-You're It!,3,AIR,air,FALSE,youre-it,0:17
+You're It!,3,AIR,air,TRUE,youre-it,0:17
 You're It!,4,Don Quixote,don-quixote,TRUE,youre-it,4:11
-You're It!,5,Don't Hold Your Breath,dont-hold-your-breath,FALSE,youre-it,3:36
-You're It!,6,WATER,water,FALSE,youre-it,0:30
-You're It!,7,You're It!,youre-it,FALSE,youre-it,3:36
+You're It!,5,Don't Hold Your Breath,dont-hold-your-breath,TRUE,youre-it,3:36
+You're It!,6,WATER,water,TRUE,youre-it,0:30
+You're It!,7,You're It!,youre-it,TRUE,youre-it,3:36
 You're It!,8,The Road,the-road,TRUE,youre-it,3:57
-You're It!,9,EARTH,earth,FALSE,youre-it,0:24
+You're It!,9,EARTH,earth,TRUE,youre-it,0:24
 You're It!,10,Long Way,long-way,TRUE,youre-it,3:57
-You're It!,11,No Man's Land,no-mans-land,FALSE,youre-it,3:28
-You're It!,12,FIRE,fire,FALSE,youre-it,0:25
+You're It!,11,No Man's Land,no-mans-land,TRUE,youre-it,3:28
+You're It!,12,FIRE,fire,TRUE,youre-it,0:25
 You're It!,13,Keep it Light,keep-it-light,TRUE,youre-it,4:29
 You're It!,14,The Eighth Fire,the-eighth-fire,TRUE,youre-it,4:19
-You're It!,15,SPIRIT,spirit,FALSE,youre-it,0:26
+You're It!,15,SPIRIT,spirit,TRUE,youre-it,0:26
 You're It!,16,No Body,no-body,TRUE,youre-it,2:46
 You're It!,17,Come to Life,come-to-life,TRUE,youre-it,4:58
-Activate,1,(Intro),intro,FALSE,activate,0:10
-Activate,2,Think You're Free,think-youre-free,FALSE,activate,3:38
+Activate,1,(Intro),activate-intro,TRUE,activate,0:10
+Activate,2,Think You're Free,think-youre-free,TRUE,activate,3:38
 Activate,3,Crumpled Up Napkin,crumpled-up-napkin,TRUE,activate,2:53
-Activate,4,St. Peter and the Serpent (The Story of Good for Nothing),st-peter-and-the-serpent-the-story-of-good-for-nothing,FALSE,activate,4:05
-Activate,5,(Shock),shock,FALSE,activate,1:00
+Activate,4,St. Peter and the Serpent (The Story of Good for Nothing),st-peter-and-the-serpent-the-story-of-good-for-nothing,TRUE,activate,4:05
+Activate,5,(Shock),shock,TRUE,activate,1:00
 Activate,6,Dead in the Eyes,dead-in-the-eyes,TRUE,activate,3:39
-Activate,7,(Denial),denial,FALSE,activate,0:25
+Activate,7,(Denial),denial,TRUE,activate,0:25
 Activate,8,All Good,all-good,TRUE,activate,3:33
-Activate,9,(Anger),anger,FALSE,activate,0:35
+Activate,9,(Anger),anger,TRUE,activate,0:35
 Activate,10,The Bitter End,the-bitter-end,TRUE,activate,4:43
-Activate,11,(Bargaining),bargaining,FALSE,activate,0:39
-Activate,12,(Depression),depression,FALSE,activate,1:06
+Activate,11,(Bargaining),bargaining,TRUE,activate,0:39
+Activate,12,(Depression),depression,TRUE,activate,1:06
 Activate,13,Welcome Home,welcome-home,TRUE,activate,2:48
-Activate,14,(Acceptance),acceptance,FALSE,activate,0:33
+Activate,14,(Acceptance),acceptance,TRUE,activate,0:33
 Activate,15,Third Side of the Coin,third-side-of-the-coin,TRUE,activate,3:25
 Activate,16,Activate,activate,TRUE,activate,2:11
 Activate,17,(The End Again),the-end-again,TRUE,activate,0:38
 Activate,18,Monkey on a String,monkey-on-a-string,TRUE,activate,2:28
 Activate,19,Be the Change,be-the-change,TRUE,activate,3:44
 Activate,20,Guantanamo,guantanamo,TRUE,activate,1:56
-Activate,21,Move Over Now,move-over-now,FALSE,activate,0:27
-Activate,22,From the Sun,from-the-sun,FALSE,activate,3:09
-Activate,23,Save Money - Kill Time,save-money-kill-time,FALSE,activate,2:11
+Activate,21,Move Over Now,move-over-now,TRUE,activate,1:41
+Activate,22,From the Sun,from-the-sun,TRUE,activate,3:09
+Activate,23,Save Money - Kill Time,save-money-kill-time,TRUE,activate,2:11
 Activate,24,Words in My Mouth,words-in-my-mouth,TRUE,activate,2:22
 Activate,25,Further Down,further-down,TRUE,activate,1:38
-Activate,26,(Yellow #5),yellow-5,FALSE,activate,0:30
-Activate,27,How Am I Not Myself,how-am-i-not-myself,FALSE,activate,1:23
+Activate,26,(Yellow #5),yellow-5,TRUE,activate,0:30
+Activate,27,How Am I Not Myself,how-am-i-not-myself,TRUE,activate,1:23
 Activate,28,Talking Boy,talking-boy,TRUE,activate,1:44
-Activate,29,(Burp),burp,FALSE,activate,0:48
-Activate,30,Outtakes,outtakes,FALSE,activate,0:49
-Activate,31,Jojo,jojo,FALSE,activate,2:54
+Activate,29,(Rumi),activate-rumi,TRUE,activate,0:48
+Activate,30,Outtakes,outtakes,TRUE,activate,0:49
+Activate,31,Jojo,jojo,TRUE,activate,2:54

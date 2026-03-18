@@ -1,117 +1,39 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import type { SearchResult } from '@/types';
 import { SearchIcon } from './icons/SearchIcon';
-import { RetroCard } from './RetroCard';
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
   const router = useRouter();
 
-  const handleSearch = useCallback(async (searchQuery: string) => {
-    if (!searchQuery.trim()) {
-      setResults([]);
-      return;
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const trimmed = query.trim();
+    if (trimmed) {
+      router.push(`/search?q=${encodeURIComponent(trimmed)}`);
     }
-
-    setIsSearching(true);
-    try {
-      // TODO: Implement actual search functionality
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
-    } catch (error) {
-      console.error('Search error:', error);
-    } finally {
-      setIsSearching(false);
-    }
-  }, [router]);
+  }
 
   return (
-    <RetroCard variant="primary" className="w-full max-w-xl mx-auto">
+    <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto">
       <div className="relative flex items-center">
         <input
           type="text"
-          className="
-            block w-full rounded-lg 
-            bg-black/40 backdrop-blur-sm
-            py-3 pl-4 pr-12
-            text-retro-paper placeholder:text-gray-400
-            border-2 border-accent-teal/30
-            focus:border-accent-green/60 focus:ring-2 focus:ring-accent-green/30
-            focus:shadow-lg focus:shadow-accent-green/30
-            transition-all duration-300
-            font-medium
-            hover:border-accent-teal/50
-          "
-          placeholder="Search lyrics..."
+          className="block w-full rounded-lg bg-bg-card border border-border-subtle py-3 pl-4 pr-12 text-text-primary placeholder:text-text-muted font-body focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors duration-200"
+          placeholder="Search lyrics, songs, albums..."
           value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            if (e.target.value.length >= 2) {
-              handleSearch(e.target.value);
-            }
-          }}
+          onChange={(e) => setQuery(e.target.value)}
         />
-        <div className="absolute inset-y-0 right-0 flex items-center pr-4">
-          {isSearching ? (
-            <svg
-              className="animate-spin h-5 w-5 text-accent-green"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
-          ) : (
-            <SearchIcon className="h-5 w-5 text-accent-teal animate-pulse" />
-          )}
-        </div>
+        <button
+          type="submit"
+          className="absolute inset-y-0 right-0 flex items-center pr-4 text-text-secondary hover:text-accent-primary transition-colors duration-200"
+          aria-label="Search"
+        >
+          <SearchIcon className="h-5 w-5" />
+        </button>
       </div>
-
-      {/* Search results dropdown */}
-      {results.length > 0 && (
-        <div className="absolute z-10 mt-2 w-full">
-          <RetroCard variant="secondary">
-            <ul className="max-h-60 overflow-auto py-1">
-              {results.map((result) => (
-                <li
-                  key={`${result.type}-${result.id}`}
-                  className="cursor-pointer select-none px-4 py-2 hover:bg-accent-green/20 text-retro-paper transition-all duration-300 hover:text-accent-orange"
-                  onClick={() => {
-                    router.push(result.url);
-                    setQuery('');
-                    setResults([]);
-                  }}
-                >
-                  <div className="flex items-center">
-                    <span className="ml-3 truncate">
-                      {result.title}
-                      <span className="ml-1 text-sm text-gray-400">
-                        ({result.type})
-                      </span>
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </RetroCard>
-        </div>
-      )}
-    </RetroCard>
+    </form>
   );
 }

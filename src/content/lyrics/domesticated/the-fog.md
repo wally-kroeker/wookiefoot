@@ -1,18 +1,20 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for The Fog by WookieFoot
 id: the-fog
-spotifyUrl: https://open.spotify.com/track/2BvZ0i7wMzcEUZ2i1ZSUK3
 tags:
-- lyrics
+  - lyrics
 title: The Fog
 trackNumber: '20'
-youtubeUrl: https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM
+youtubeUrl: 'https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM'
+sourceUrl: 'https://wookiefoot.com/track/2872655/the-fog'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 It’s the buzzing of the lights
 
 And all the hissing and all the glow
@@ -57,7 +59,7 @@ When i love something i let it go
 
 And sing that song i sang
 
-But scooby not back to me like a broken boomerang
+But scooby not  back to me like a broken boomerang
 
 don’t want to get it back just dip my head in quick
 

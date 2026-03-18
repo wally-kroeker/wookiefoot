@@ -1,13 +1,12 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for While We Live by WookieFoot
 id: while-we-live
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: While We Live
 trackNumber: '8'
 youtubeUrl: ''

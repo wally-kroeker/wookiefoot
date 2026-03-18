@@ -1,13 +1,12 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Solstice by WookieFoot
 id: solstice
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Solstice
 trackNumber: '11'
 youtubeUrl: ''

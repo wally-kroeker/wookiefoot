@@ -1,16 +1,15 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Nothing by WookieFoot
 id: nothing
-spotifyUrl: https://open.spotify.com/track/2HjAgNo1xTYwtaIdk9D0fs
 tags:
-- lyrics
+  - lyrics
 title: Nothing
 trackNumber: '10'
-youtubeUrl: https://music.youtube.com/watch?v=lZ0tzv7MVJs&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=lZ0tzv7MVJs&list=RDAOrjA6cttNfONQIe1vu50Cwg'
 ---
 
 Well I already got to much sh&t i should just be counting my blessing

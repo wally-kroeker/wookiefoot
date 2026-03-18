@@ -1,18 +1,20 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Kegger by WookieFoot
 id: kegger
-spotifyUrl: https://open.spotify.com/track/79AU9CNz1Wc0uzzjo1y9IY
 tags:
-- lyrics
+  - lyrics
 title: Kegger
 trackNumber: '9'
-youtubeUrl: https://music.youtube.com/watch?v=akZ_H6qu8uY&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=akZ_H6qu8uY&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872601/kegger'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 There is a collage of photographs on the wall
 Of people at the party in a drunk ass pose
 The sticky wood floor starts to vibrate

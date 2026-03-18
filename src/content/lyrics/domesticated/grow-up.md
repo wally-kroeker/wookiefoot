@@ -1,18 +1,20 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Grow Up by WookieFoot
 id: grow-up
-spotifyUrl: https://open.spotify.com/track/6l3pSOCaVhKMBJX2FSnaRo
 tags:
-- lyrics
+  - lyrics
 title: Grow Up
 trackNumber: '2'
-youtubeUrl: https://music.youtube.com/watch?v=TNnRUREY2kE
+youtubeUrl: 'https://music.youtube.com/watch?v=TNnRUREY2kE'
+sourceUrl: 'https://wookiefoot.com/track/2872637/grow-up'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 I got no direction I got no bearing or course
 Didn’t get instruction with this life it’s such a bore
 Gradually I graduated high school finished me

@@ -1,105 +1,76 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RetroCard } from '@/components/ui/RetroCard';
-import { AlbumCover } from '@/components/ui/AlbumCover';
+import WFCard from '@/components/ui/WFCard';
 import { getAllSongs } from '@/lib/utils/markdown';
+
+export const metadata: Metadata = {
+  title: 'Lyrics | WookieFoot',
+  description: 'Browse all WookieFoot song lyrics organized by album.',
+};
+
+export const dynamic = 'force-dynamic';
 
 export default async function LyricsPage() {
   const songs = await getAllSongs();
 
+  // Group songs by album
+  const albumGroups = new Map<string, typeof songs>();
+  for (const song of songs) {
+    const albumKey = song.albumTitle || 'Unknown Album';
+    if (!albumGroups.has(albumKey)) {
+      albumGroups.set(albumKey, []);
+    }
+    albumGroups.get(albumKey)!.push(song);
+  }
+
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <RetroCard variant="primary" className="p-8 hover-lift">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            <span className="text-retro-paper cosmic-glow">WookieFoot</span>
-            <span className="text-gradient block mt-2">Lyrics Archive</span>
-          </h1>
-          <p className="text-lg text-retro-paper/80 max-w-2xl mx-auto">
-            Browse through our collection of WookieFoot lyrics. Click on any song to
-            view its full lyrics and details.
-          </p>
-        </div>
-      </RetroCard>
-
-      {/* Songs Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {songs.map((song) => (
-          <Link key={song.id} href={`/lyrics/${song.slug}`}>
-            <RetroCard
-              variant="secondary"
-              className="p-6 hover-lift group transition-all duration-300 border-accent-teal/30 hover:border-accent-green/60"
-            >
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  {song.albumCoverArt && (
-                    <div className="flex-shrink-0 relative group-hover:scale-105 transition-transform duration-300">
-                      <div className="absolute inset-0 bg-gradient-green-orange rounded-lg blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
-                      <AlbumCover
-                        albumArt={song.albumCoverArt}
-                        title={song.albumTitle || ''}
-                        size="sm"
-                      />
-                    </div>
-                  )}
-                  <div>
-                    <h2 className="text-xl font-bold text-retro-paper group-hover:text-gradient transition-all duration-300">
-                      {song.title}
-                    </h2>
-                    {song.albumTitle && (
-                      <p className="mt-1 text-sm text-retro-paper/80">
-                        from {song.albumTitle}
-                      </p>
-                    )}
-                    {song.description && (
-                      <p className="mt-2 text-sm text-retro-paper/60">
-                        {song.description}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Tags */}
-                {song.tags && song.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {song.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-full bg-accent-green/20 text-retro-paper/80 border border-accent-green/30"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Footer */}
-                <div className="flex justify-between items-center pt-4 border-t border-accent-teal/30">
-                  <span className="text-sm text-retro-paper/60">
-                    {song.duration}
-                  </span>
-                  <span className="text-accent-green group-hover:text-accent-orange transition-colors duration-300">
-                    View Lyrics →
-                  </span>
-                </div>
-              </div>
-            </RetroCard>
-          </Link>
-        ))}
+    <div className="max-w-4xl mx-auto space-y-8">
+      {/* Page Header */}
+      <div>
+        <h1 className="font-display text-4xl text-text-primary">Lyrics</h1>
+        <p className="mt-2 text-text-secondary font-body">Browse all WookieFoot songs</p>
       </div>
 
-      {/* Call to Action */}
-      <RetroCard variant="secondary" className="p-6 text-center hover-lift">
-        <p className="text-retro-paper/80">
-          Can't find what you're looking for?{' '}
-          <Link
-            href="/search"
-            className="text-accent-green hover:text-accent-orange transition-colors duration-300 font-semibold"
-          >
-            Try searching our complete lyrics archive
-          </Link>
-        </p>
-      </RetroCard>
+      {/* Search Link */}
+      <p className="text-text-secondary font-body">
+        Looking for specific lyrics?{' '}
+        <Link
+          href="/search"
+          className="text-accent-primary hover:text-accent-secondary transition-colors duration-200"
+        >
+          Try our search &rarr;
+        </Link>
+      </p>
+
+      {/* Songs Grouped by Album */}
+      {Array.from(albumGroups.entries()).map(([albumTitle, albumSongs]) => (
+        <WFCard key={albumTitle}>
+          <h2 className="font-display text-xl text-accent-secondary mb-4">{albumTitle}</h2>
+          <div className="divide-y divide-border-subtle">
+            {albumSongs.map((song) => (
+              <Link
+                key={song.id}
+                href={`/lyrics/${song.slug}`}
+                className="block py-3 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-text-primary font-medium font-body group-hover:text-accent-primary transition-colors duration-200">
+                      {song.title}
+                    </span>
+                    <span className="ml-3 text-text-muted text-sm font-body">
+                      {albumTitle}
+                    </span>
+                  </div>
+                  <span className="text-text-muted text-sm font-body flex-shrink-0 ml-4">
+                    {song.duration}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </WFCard>
+      ))}
     </div>
   );
 }

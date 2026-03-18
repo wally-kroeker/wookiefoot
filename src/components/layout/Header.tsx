@@ -1,81 +1,57 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import SearchBar from '../ui/SearchBar';
-import { RetroCard } from '../ui/RetroCard';
+import ThemeToggle from './ThemeToggle';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/albums', label: 'Albums' },
+  { href: '/lyrics', label: 'Lyrics' },
+  { href: '/community', label: 'Community' },
+  { href: '/search', label: 'Search' },
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { href: '/albums', label: 'Albums' },
-    { href: '/lyrics', label: 'Lyrics' },
-    { href: '/about', label: 'About' },
-  ];
 
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className={`relative z-50 transition-all duration-300 ${isScrolled ? 'sticky top-0' : ''}`}>
-      <RetroCard variant="primary" className={`mx-4 mt-4 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-accent-green/50' : ''}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="relative py-3 px-4">
-            {/* Main header content */}
-            <div className="flex flex-col items-center space-y-3">
-              {/* Logo and title - Compact */}
-              <div className="text-center">
-                <Link href="/" className="inline-block group">
-                  <h1 className="text-2xl md:text-3xl font-bold text-retro-paper transition-all duration-300 group-hover:scale-105">
-                    <span className="cosmic-glow">WookieFoot</span>
-                    <span className="text-gradient ml-2">Lyrics</span>
-                  </h1>
-                </Link>
-              </div>
+    <header className="bg-bg-nav sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Brand */}
+          <Link href="/" className="font-display text-accent-secondary text-2xl tracking-wide hover:opacity-90 transition-opacity">
+            WookieFoot
+          </Link>
 
-              {/* Navigation - Desktop inline with search */}
-              <div className="w-full flex flex-col md:flex-row items-center gap-3 md:gap-4">
-                <nav className="hidden md:flex space-x-4 relative z-20">
-                  {navLinks.map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className={`px-3 py-1.5 text-sm transition-all duration-300 relative group ${
-                        isActive(href)
-                          ? 'text-accent-green'
-                          : 'text-retro-paper/80 hover:text-accent-orange'
-                      }`}
-                    >
-                      {label}
-                      {isActive(href) && (
-                        <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-green-orange rounded-full" />
-                      )}
-                    </Link>
-                  ))}
-                </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`px-3 py-2 text-sm font-medium rounded transition-colors duration-200 ${
+                  isActive(href)
+                    ? 'text-accent-secondary'
+                    : 'text-text-primary hover:text-accent-secondary'
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+            <ThemeToggle />
+          </nav>
 
-                {/* Search Bar */}
-                <div className="w-full md:flex-1 max-w-xl">
-                  <SearchBar />
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile menu button */}
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="flex items-center space-x-2 md:hidden">
+            <ThemeToggle />
             <button
               type="button"
-              className="md:hidden absolute right-4 top-4 text-retro-paper hover:text-accent-orange transition-colors duration-200"
+              className="text-text-primary hover:text-accent-secondary transition-colors p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-label="Toggle navigation menu"
@@ -92,35 +68,28 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </RetroCard>
+      </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="relative z-50 animate-fade-in">
-          <RetroCard variant="secondary" className="mx-4 mt-2 md:hidden border-accent-teal/50">
-            <nav className="py-2">
-              <div className="space-y-1 px-4">
-                {navLinks.map(({ href, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className={`block py-2 transition-all duration-300 relative ${
-                      isActive(href)
-                        ? 'text-accent-green cosmic-glow'
-                        : 'text-retro-paper hover:text-accent-orange'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {label}
-                    {isActive(href) && (
-                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-green-orange rounded-r-full" />
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </RetroCard>
-        </div>
+        <nav className="md:hidden bg-bg-nav border-t border-gray-700">
+          <div className="px-4 py-2 space-y-1">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`block px-3 py-2 text-sm font-medium rounded transition-colors duration-200 ${
+                  isActive(href)
+                    ? 'text-accent-secondary'
+                    : 'text-text-primary hover:text-accent-secondary'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </nav>
       )}
     </header>
   );

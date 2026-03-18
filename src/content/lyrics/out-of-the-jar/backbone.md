@@ -1,18 +1,20 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Backbone by WookieFoot
 id: backbone
-spotifyUrl: https://open.spotify.com/track/2U7tDT2Md3Pr5Z1eNnzJrS
 tags:
-- lyrics
+  - lyrics
 title: Backbone
 trackNumber: '13'
-youtubeUrl: https://music.youtube.com/watch?v=TNnRUREY2kE
+youtubeUrl: 'https://music.youtube.com/watch?v=TNnRUREY2kE'
+sourceUrl: 'https://wookiefoot.com/track/2872605/backbone'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 The sun is shining on Egyptian tombs
 Casting shadows on roman ruins
 Passing over a british crown over to western world

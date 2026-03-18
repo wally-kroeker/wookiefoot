@@ -1,13 +1,12 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Two Ways to Learn by WookieFoot
 id: two-ways-to-learn
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Two Ways to Learn
 trackNumber: '6'
 youtubeUrl: ''

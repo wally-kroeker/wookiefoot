@@ -1,13 +1,12 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Small But Fierce by WookieFoot
 id: small-but-fierce
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Small But Fierce
 trackNumber: '10'
 youtubeUrl: ''

@@ -1,16 +1,15 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Tomorrow by WookieFoot
 id: tomorrow
-spotifyUrl: https://open.spotify.com/track/4XVL2VHQoOtITU9QvbcXr8?si=XTKqMbI2SOSXQVi9EmOFXA
 tags:
-- lyrics
+  - lyrics
 title: Tomorrow
 trackNumber: '12'
-youtubeUrl: https://music.youtube.com/watch?v=TNnRUREY2kE
+youtubeUrl: 'https://music.youtube.com/watch?v=TNnRUREY2kE'
 ---
 
 Please don't walk behind me because I really shouldn't lead you

@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Monster Hugs by WookieFoot
 id: monster-hugs
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Monster Hugs
 trackNumber: '7'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 (Verse)

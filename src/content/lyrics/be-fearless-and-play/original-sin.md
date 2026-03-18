@@ -5,7 +5,6 @@ slug: original-sin
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

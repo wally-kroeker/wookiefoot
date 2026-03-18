@@ -1,84 +1,54 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Mushroom Jazz by WookieFoot
 id: mushroom-jazz
-spotifyUrl: https://open.spotify.com/track/1V6Er2L8QtNu3qIaTMjMuj
 tags:
-- lyrics
+  - lyrics
 title: Mushroom Jazz
 trackNumber: '3'
-youtubeUrl: https://music.youtube.com/watch?v=I0XhrfrIJZU
+youtubeUrl: 'https://music.youtube.com/watch?v=I0XhrfrIJZU'
+sourceUrl: 'https://wookiefoot.com/track/2872638/mushroom-jazz'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
-I, I let you drive around my mind
-I can't count the times you made me feel like I'm nothing
-Played me like a fool, like a fool
+Lyrics
+Lead me to the visceral and let me take a drink
+I think I think too much lose touch in a blink
+But now I got my tribe I like this funky vibe
+First wave hits sittin' heavy in my inside
+Sin becomes a ritual so offer of thanks and praise
+Every daze it’s habitual like a wishing well
+Hell, I got a couple of more coins
+Welcome to Wookiefoot
+I’ll let you throw them in you join
 
-Saying, "Drink another whiskey
-Pop another pill
-Money makes you happy
-Heaven isn't real
-You won't find nobody to love
-Because your heart's too broke"
-Now I know
+Swing to the mushroom jazz
 
-You ain't nothin' but a liar
-Yeah, I walk right out the fire
-Yeah, you try to keep me down
-Try to put me underground
-But I'm only going higher
-I can hear you in my head
-In my bed when I'm dreamin'
-You try to be my friend
-But you're blowin' smoke
-Oh, and now, I ain't scared of
-Tellin' you where you can go
-'Cause I know
-You're nothing but a liar
+Silly Simon’s got my number
+You know how I know this ? Cause I asked him
+Thought I might have just seen him but I passed him by
+Better get packed up for the trip
+Your slipping and sliding riding on a tide
+Of a freaky fun guy
 
-You burned me one too many times
-Like a devil in disguise, hiding your true colors
-Just leave me alone
-Keep leading me on
+Sittin so concealed in a field full of crap
+Stumble through the rubble pick up the mad cap
+Now your crunchin and your munchin
+Gotta get the god’s flesh going down
+You feel it wellin like a wave
+To take you to the breakdown
 
-Saying, "Drink another whiskey
-Pop another pill
-Money makes you happy
-Heaven isn't real
-You won't find nobody to love
-Because your heart's too broke"
-Now I know
+(the breakdown makes my stomach feel a little funny…)
 
-You ain't nothin' but a liar
-Yeah, I walk right out the fire
-Yeah, you try to keep me down
-Try to put me underground
-But I'm only going higher
-I can hear you in my head
-In my bed when I'm dreamin'
-You try to be my friend
-But you're blowin' smoke
-Oh, and now, I ain't scared of
-Tellin' you where you can go
-'Cause I know
-You're nothing but a liar
+The city’s buzzin' in the lights can quickly bring you down
+So you ramble to the forest where there’s nobody else around
+If you see a tree fall and it doesn’t make a sound
+Don’t get worried it just means that your not there
 
-If I was doin' what you do
-Then you would swear I poisoned you
-
-You're nothing but a liar (liar)
-Yeah, I walk right out the fire (fire)
-Yeah, you try to keep me down
-Try to put me underground
-But I'm only going higher
-I can hear you in my head
-In my bed when I'm dreamin'
-You try to be my friend
-But you're blowin' smoke
-Oh, and now, I ain't scared of
-Tellin' you where you can go
-'Cause I know
-You're nothing but a liar
+Through the other side where Time and Space erased
+Have placed you face to face with something much greater
+Than self or pride or greed
+YOU NEED TO BELIEVE IF YOU WANT TO SEE ! ! ! !

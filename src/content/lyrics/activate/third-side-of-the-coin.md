@@ -5,7 +5,6 @@ slug: third-side-of-the-coin
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

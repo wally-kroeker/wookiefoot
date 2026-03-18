@@ -6,7 +6,7 @@ export interface SearchResult {
 }
 
 export interface Album {
-  id: number;
+  id: string | number;
   title: string;
   coverArt: string;
   coverImage?: string; // For backward compatibility
@@ -43,7 +43,7 @@ export interface Track {
   slug?: string;
   description?: string;
   youtubeUrl?: string;
-  spotifyUrl?: string;
+  youtubeVideoId?: string;
   tags?: string[];
   contributors?: string[];
   lrcLibId?: number;
@@ -64,13 +64,9 @@ export interface Song {
   tags?: string[];
   contributors?: string[];
   youtubeUrl?: string;
-  spotifyUrl?: string;
-  hasLyrics?: 'Yes' | 'Failed' | 'Skipped';
+  youtubeVideoId?: string;
+  hasLyrics?: 'Yes' | 'TRUE' | 'Failed' | 'Skipped';
   media?: {
-    spotify?: {
-      trackId: string;
-      uri: string;
-    };
     youtube?: {
       videoId: string;
       url: string;

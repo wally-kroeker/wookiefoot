@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for The Great Unknown by WookieFoot
 id: the-great-unknown
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: The Great Unknown
 trackNumber: '3'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 (Intro)

@@ -2,96 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════
+   THEME: Festival Campfire (Light — Default)
+   ═══════════════════════════════════════════════════════ */
+:root {
+  --bg-primary: #F5F0E8;
+  --bg-secondary: #EDE4D3;
+  --bg-card: #FFFFFF;
+  --bg-nav: #2C1810;
+  --text-primary: #2C1810;
+  --text-secondary: #5C3D2E;
+  --text-muted: #6B5840;
+  --accent-primary: #2D5016;
+  --accent-secondary: #B87A08;
+  --accent-warm: #C2571A;
+  --border-subtle: #C8B99A;
+  --border-accent: #D4910A;
+}
+
+/* ═══════════════════════════════════════════════════════
+   THEME: Sacred Night (Dark)
+   ═══════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg-primary: #1A1A2E;
+  --bg-secondary: #24243E;
+  --bg-card: #24243E;
+  --bg-nav: #16162B;
+  --text-primary: #F0EAD6;
+  --text-secondary: #C4B998;
+  --text-muted: #8A8078;
+  --accent-primary: #C9A84C;
+  --accent-secondary: #3A8A7C;
+  --accent-warm: #C47D7D;
+  --border-subtle: #3A3A5E;
+  --border-accent: #C9A84C;
+}
+
 @layer base {
-  /* Base text styles */
   body {
-    @apply text-white leading-normal;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Heading styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold leading-tight text-white;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  /* Lyrics specific styles */
-  .prose .lyrics {
-    @apply whitespace-pre-wrap text-lg leading-relaxed text-gray-200;
-  }
-
-  /* Album and song title styles */
-  .album-title {
-    @apply text-4xl font-bold mb-6 text-white;
-  }
-
-  .song-title {
-    @apply text-3xl font-bold mb-4 text-white;
-  }
-
-  /* Link styles */
   a {
-    @apply transition-colors duration-300;
-    color: #6BCB77; /* accent-green-light */
+    color: var(--accent-primary);
+    transition: color 0.2s ease;
   }
   a:hover {
-    color: #F59E0B; /* accent-orange-light */
-  }
-
-  /* Button styles - Earthy themed */
-  .btn-retro {
-    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-300 text-white;
-    background: linear-gradient(135deg, #4A9B5A 0%, #D97706 100%);
-    border: 1px solid rgba(74, 155, 90, 0.3);
-    box-shadow: 0 4px 12px rgba(74, 155, 90, 0.2);
-  }
-  .btn-retro:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(74, 155, 90, 0.4);
-    border-color: rgba(217, 119, 6, 0.5);
-    background: linear-gradient(135deg, #5AAB6A 0%, #E98716 100%);
-  }
-  .btn-retro:active {
-    transform: scale(0.98);
+    color: var(--accent-secondary);
   }
 }
 
 @layer components {
-  /* Text gradient effect */
-  .text-gradient {
-    background: linear-gradient(135deg, #4A9B5A 0%, #D97706 25%, #92400E 50%, #14B8A6 75%, #4A9B5A 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: cosmic-shift 8s ease infinite;
+  /* Primary button */
+  .btn-primary {
+    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-200;
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
   }
 
-  /* Earthy glow effect - subtle */
-  .cosmic-glow {
-    text-shadow: 0 0 15px rgba(74, 155, 90, 0.4),
-                 0 0 30px rgba(217, 119, 6, 0.2);
+  /* Secondary button */
+  .btn-secondary {
+    @apply px-5 py-2.5 rounded-lg font-medium transition-all duration-200;
+    background-color: transparent;
+    color: var(--accent-primary);
+    border: 1.5px solid var(--accent-primary);
+  }
+  .btn-secondary:hover {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
   }
 
-  /* Hover lift effect */
-  .hover-lift {
-    @apply transition-transform duration-300 hover:scale-105 hover:-translate-y-1;
-  }
-
-  /* Subtle earthy glow - removed, using simpler shadows */
-}
-
-@layer utilities {
-  /* Starfield background pattern */
-  .starfield {
-    background-image: 
-      radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(2px 2px at 60px 70px, rgba(255, 20, 147, 0.3), transparent),
-      radial-gradient(1px 1px at 50px 50px, rgba(0, 217, 255, 0.4), transparent),
-      radial-gradient(1px 1px at 80px 10px, rgba(57, 255, 20, 0.3), transparent),
-      radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.2), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(139, 47, 201, 0.3), transparent),
-      radial-gradient(1px 1px at 160px 30px, rgba(255, 20, 147, 0.2), transparent);
-    background-size: 200px 100px;
-    animation: star-twinkle 4s ease-in-out infinite;
+  /* Lyrics display */
+  .lyrics-body {
+    font-family: var(--font-lyrics);
+    font-style: italic;
+    white-space: pre-wrap;
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-size: 1.125rem;
   }
 }

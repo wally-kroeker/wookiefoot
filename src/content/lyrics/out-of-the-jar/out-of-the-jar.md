@@ -1,16 +1,15 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Out of the Jar by WookieFoot
 id: out-of-the-jar
-spotifyUrl: https://open.spotify.com/track/7mIqZBPv7DjmaPmrTmEVJm
 tags:
-- lyrics
+  - lyrics
 title: Out of the Jar
 trackNumber: '6'
-youtubeUrl: https://music.youtube.com/watch?v=1vawTTE509c&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=1vawTTE509c&list=RDAOrjA6cttNfONQIe1vu50Cwg'
 ---
 
 When I was a boy, I used to sing a song in the temple

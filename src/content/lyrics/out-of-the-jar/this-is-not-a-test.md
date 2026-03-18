@@ -1,18 +1,20 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for This is Not a Test by WookieFoot
 id: this-is-not-a-test
-spotifyUrl: https://open.spotify.com/track/2MdKGP0e6N75LGgd96VsQH
 tags:
-- lyrics
+  - lyrics
 title: This is Not a Test
 trackNumber: '3'
-youtubeUrl: https://music.youtube.com/watch?v=dazfvHV_NuY&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=dazfvHV_NuY&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872595/this-is-not-a-test'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 And if you seek it know that it will never come
 and if you seek it know that it will never come
 under your toes is where the greenest grass grows

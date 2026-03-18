@@ -5,7 +5,6 @@ slug: monkey-see-monkey-do
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

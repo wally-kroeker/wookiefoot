@@ -5,7 +5,7 @@ slug: junk-food
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
+youtubeVideoId: PLACEHOLDER
 tags: []
 contributors: []
 ---

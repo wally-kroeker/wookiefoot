@@ -5,7 +5,6 @@ slug: crumpled-up-napkin
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

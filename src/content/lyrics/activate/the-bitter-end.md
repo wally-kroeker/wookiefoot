@@ -1,13 +1,12 @@
 ---
 albumId: activate
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for The Bitter End by WookieFoot
 id: the-bitter-end
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: The Bitter End
 trackNumber: '10'
 youtubeUrl: ''

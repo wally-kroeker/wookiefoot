@@ -1,16 +1,15 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Sweet Silence by WookieFoot
 id: sweet-silence
-spotifyUrl: https://open.spotify.com/track/7oawyoJUDoM0N2rwZIrba6
 tags:
-- lyrics
+  - lyrics
 title: Sweet Silence
 trackNumber: '10'
-youtubeUrl: https://music.youtube.com/watch?v=lGboTYpraWw&list=RDAMVMubC1L1Bn8II
+youtubeUrl: 'https://music.youtube.com/watch?v=lGboTYpraWw&list=RDAMVMubC1L1Bn8II'
 ---
 
 You don't need my help with your surrender

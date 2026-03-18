@@ -5,7 +5,7 @@ slug: be-fearless-and-play
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
+youtubeVideoId: PLACEHOLDER
 tags: []
 contributors: []
 ---

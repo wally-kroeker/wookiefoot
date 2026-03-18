@@ -1,13 +1,12 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for A Great and Unlikely Story by WookieFoot
 id: a-great-and-unlikely-story
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: A Great and Unlikely Story
 trackNumber: '12'
 youtubeUrl: ''

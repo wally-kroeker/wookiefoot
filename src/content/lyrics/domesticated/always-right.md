@@ -1,16 +1,15 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Always Right by WookieFoot
 id: always-right
-spotifyUrl: https://open.spotify.com/track/6n9VBJ0IlUAfjOqiWcWefR
 tags:
-- lyrics
+  - lyrics
 title: Always Right
 trackNumber: '21'
-youtubeUrl: https://music.youtube.com/watch?v=TNnRUREY2kE
+youtubeUrl: 'https://music.youtube.com/watch?v=TNnRUREY2kE'
 ---
 
 I can feel the heat of his breath on your neck bone 

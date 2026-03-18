@@ -5,7 +5,6 @@ slug: words-in-my-mouth
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

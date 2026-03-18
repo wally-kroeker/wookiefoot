@@ -5,7 +5,6 @@ slug: guantanamo
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

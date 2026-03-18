@@ -1,18 +1,20 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for The Snake Catcher by WookieFoot
 id: the-snake-catcher
-spotifyUrl: https://open.spotify.com/track/5D1yAmES5L8FbKrwYF0Uek
 tags:
-- lyrics
+  - lyrics
 title: The Snake Catcher
 trackNumber: '12'
-youtubeUrl: https://music.youtube.com/watch?v=oQn0W87ixtc&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=oQn0W87ixtc&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872604/the-snake-catcher'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 Hunter goes to the sacred ground
 up on a mountain see the man spellbound
 king of the snakes is what he found

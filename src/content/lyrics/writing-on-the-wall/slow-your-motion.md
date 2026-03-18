@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Slow Your Motion by WookieFoot
 id: slow-your-motion
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Slow Your Motion
 trackNumber: '4'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 Slow, your motion

@@ -1,16 +1,16 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Ready or Not by WookieFoot
 id: ready-or-not
-spotifyUrl: https://open.spotify.com/track/6TDh8Fv2Axnd93xOK0pSzo
 tags:
-- lyrics
+  - lyrics
 title: Ready or Not
 trackNumber: '2'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 As you walk along your road

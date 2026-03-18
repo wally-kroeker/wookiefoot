@@ -1,16 +1,15 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Lose Your Mind by WookieFoot
 id: lose-your-mind
-spotifyUrl: https://open.spotify.com/track/0q9tRpUgoGbnb9lTIGltkS
 tags:
-- lyrics
+  - lyrics
 title: Lose Your Mind
 trackNumber: '6'
-youtubeUrl: https://music.youtube.com/watch?v=E04V6YpB35g
+youtubeUrl: 'https://music.youtube.com/watch?v=E04V6YpB35g'
 ---
 
 So many people in this world so much suffering

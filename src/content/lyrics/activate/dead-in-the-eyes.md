@@ -5,7 +5,6 @@ slug: dead-in-the-eyes
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

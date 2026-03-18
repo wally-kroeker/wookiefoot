@@ -5,7 +5,7 @@ slug: crack-in-the-dam
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
+youtubeVideoId: PLACEHOLDER
 tags: []
 contributors: []
 ---

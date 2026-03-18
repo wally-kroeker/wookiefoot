@@ -5,7 +5,6 @@ slug: be-the-change
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

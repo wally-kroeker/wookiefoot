@@ -5,7 +5,6 @@ slug: monkey-on-a-string
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

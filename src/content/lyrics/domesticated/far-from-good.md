@@ -5,65 +5,57 @@ slug: far-from-good
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
+sourceUrl: 'https://wookiefoot.com/track/2872653/far-from-good'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
-I try to walk away and she comes runnin'.
-I try to get in close, she runs away.
-She'll do anything you want if you are leavin'.
-That is, anything you want until you stay.
-I found the combination to her little safe once,
+Lyrics
+I try to walk away and she come running
 
-but everything inside it turned to dust.
+I try to get in close and she runs away
 
-She says its only for the best to never read it,
+She’ll do anything you want if you are leaving
 
-I think she thinks its for the best to never trust.
+That is anything you want until you stay
 
+I found the combination to her little safe once
 
+But everything inside it turned to dust
 
-She looks so good from afar,
+She’s says it’s only for the best to never read it
 
-but she's so far from good.
+I think she thinks it’s for the best to never trust
 
-It takes a whole lot of shit to make her cry.
+She looks so good from afar she’s so far from good
 
-I tried to get inside, I don't think that you could.
+It takes a whole lot o' shit to make her cry
 
-She looks good from afar,
+Try to get inside but i don’t think that you could
 
-but she's so far from good.
+She looks so good from afar but she’s so far from good
 
+Someone in her past had done some damage
 
+Someone beat up on a little girl
 
-Someone in her past had done some damage.
+I don’t know who or when or what had happened
 
-Someone beat up on a little girl.
+But i see the price for being pretty in this world
 
-I don't know who or when it happened,
+It takes a whole lot o' strength to hold a shield up
 
-but I see the price for being pretty in this world.
+And every now and then i catch a peak
 
-It takes a whole lot of strength to hold that shield up
+I guess she’s saving up for someone that’ll hurt her
 
-and every now and then I catch a peek.
+I guess i sometimes wish that someone could be me
 
-I guess she's saving up for someone that'll hurt her.
+She looks so good from afar she’s so far from good
 
-I guess I sometimes wish that someone could be me
+It takes a whole lot o' shit to make her cry
 
+Try to get inside but i don’t think that you could
 
-
-She looks so good from afar,
-
-but she's so far from good.
-
-It takes a whole lot of shit to make her cry.
-
-I tried to get inside, I don't think that you could.
-
-She looks good from afar,
-
-but she's so far from good.
+She looks so good from afar but she’s so far from good

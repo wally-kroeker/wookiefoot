@@ -1,16 +1,16 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Just Visiting by WookieFoot
 id: just-visiting
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Just Visiting
 trackNumber: '4'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 Well you may see a man close up his open hand

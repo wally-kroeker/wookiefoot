@@ -1,18 +1,20 @@
 ---
 albumId: domesticated
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Scream by WookieFoot
 id: scream
-spotifyUrl: https://open.spotify.com/track/0aOL0e2aKXQRL10DZu53hZ
 tags:
-- lyrics
+  - lyrics
 title: Scream
 trackNumber: '19'
-youtubeUrl: https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM
+youtubeUrl: 'https://music.youtube.com/watch?v=Q62WW13Ws-Y&list=LM'
+sourceUrl: 'https://wookiefoot.com/track/2872654/scream'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
+Lyrics
 Art is dead and it took god with him
 
 Try to save his soul singing in a museum

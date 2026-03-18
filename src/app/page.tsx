@@ -1,165 +1,163 @@
-import Link from 'next/link';
-import { RetroCard } from '@/components/ui/RetroCard';
+import WFCard from '@/components/ui/WFCard';
 import { AlbumCover } from '@/components/ui/AlbumCover';
+import Link from 'next/link';
 import { getAllAlbums } from '@/lib/utils/markdown';
+import { getAlbumImageUrl } from '@/lib/utils/image-processing';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'WookieFoot Lyrics Archive',
+  description: 'Explore WookieFoot lyrics, albums, and connect with the community.',
+};
 
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const albums = await getAllAlbums();
-  const featuredAlbum = albums[0]; // Latest album
+
+  // Get the latest album chronologically (last in sorted array)
+  const latestAlbum = albums.length > 0 ? albums[albums.length - 1] : null;
+  const latestAlbumCover = latestAlbum
+    ? getAlbumImageUrl(latestAlbum.title, 'full')
+    : '';
 
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <RetroCard variant="primary" className="p-8">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-12">
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="text-white cosmic-glow">WookieFoot</span>
-              <span className="text-gradient block mt-2">Lyrics Archive</span>
-            </h1>
-            <p className="mt-6 text-lg text-gray-300 max-w-2xl">
-              Explore lyrics, discover meanings, and connect with other fans in our
-              growing community of WookieFoot enthusiasts.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
-              <Link 
-                href="/albums" 
-                className="btn-retro"
-                prefetch={true}
-              >
-                Browse Albums
-              </Link>
-              <Link 
-                href="/search" 
-                className="btn-retro bg-gradient-teal-brown hover:bg-gradient-green-orange"
-                prefetch={true}
-              >
-                Search Lyrics
-              </Link>
-            </div>
-          </div>
-          <div className="w-72 md:w-96 transform hover:scale-105 transition-transform duration-500 relative z-10 group">
-            <div className="absolute -inset-4 bg-gradient-green-orange rounded-lg blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
-              <AlbumCover
-                albumArt={featuredAlbum.coverArt}
-                title={featuredAlbum.title}
-                priority={true}
-                size="lg"
-              />
-            </div>
-          </div>
+      <section
+        className="rounded-xl rounded-b-3xl p-10 md:p-16 text-center"
+        style={{
+          background: 'linear-gradient(135deg, #2D5016, #4A7A2B, #D4910A)',
+        }}
+      >
+        <h1 className="font-display text-5xl md:text-6xl text-white">
+          WookieFoot
+        </h1>
+        <p className="font-lyrics italic text-xl text-white/90 mt-4 max-w-xl mx-auto">
+          Music for the mind, body, and soul
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link href="/albums" className="btn-primary w-full sm:w-auto">
+            Explore Albums
+          </Link>
+          <a
+            href="https://www.youtube.com/@wookiefootmark"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary w-full sm:w-auto text-white border-2 border-white hover:bg-white/10"
+          >
+            Watch on YouTube
+          </a>
         </div>
-      </RetroCard>
+      </section>
 
-      {/* Featured Sections */}
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Latest Album */}
-        <RetroCard variant="secondary" className="p-6 hover:bg-black/40 transition-all duration-300">
-          <h2 className="text-xl font-bold text-gradient mb-4">
-            Latest Album
-          </h2>
-          <div className="space-y-4">
-            <div className="w-40 mx-auto transform hover:scale-105 transition-transform duration-500 group relative">
-              <div className="absolute -inset-2 bg-gradient-green-orange rounded-lg blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-              <div className="relative rounded-lg overflow-hidden shadow-xl">
-                <AlbumCover
-                  albumArt={featuredAlbum.coverArt}
-                  title={featuredAlbum.title}
-                  size="md"
-                />
-              </div>
-            </div>
-            <div className="text-center">
-              <h3 className="text-lg font-bold text-white">
-                {featuredAlbum.title}
-              </h3>
-              <p className="text-sm text-gray-400 mt-2">
-                {featuredAlbum.description}
+      {/* Band Intro */}
+      <section className="bg-bg-secondary rounded-xl p-8 md:p-10">
+        <p className="font-body text-text-secondary text-lg max-w-3xl mx-auto text-center leading-relaxed">
+          WookieFoot is a band from Minneapolis that blends folk, funk, reggae,
+          and rock with conscious lyrics and high-energy live shows. Known for
+          their annual Shangri-La Music Festival, they have been spreading joy
+          and wisdom since 2000.
+        </p>
+      </section>
+
+      {/* Latest Album */}
+      {latestAlbum && (
+        <section>
+          <WFCard variant="elevated" className="flex flex-col md:flex-row items-center gap-8">
+            <AlbumCover
+              albumTitle={latestAlbum.title}
+              src={latestAlbumCover}
+              size="lg"
+            />
+            <div className="text-center md:text-left">
+              <p className="text-text-muted text-sm font-body uppercase tracking-wide">
+                Latest Album
+              </p>
+              <h2 className="font-display text-3xl text-text-primary mt-1">
+                {latestAlbum.title}
+              </h2>
+              <p className="text-text-secondary font-body mt-1">
+                {latestAlbum.year} &middot; {latestAlbum.tracks?.length ?? 0} tracks
               </p>
               <Link
-                href={`/albums/${featuredAlbum.id}`}
-                className="btn-retro mt-4 inline-block text-sm"
-                prefetch={true}
+                href={`/albums/${latestAlbum.id}`}
+                className="btn-primary inline-block mt-4"
               >
                 View Album
               </Link>
             </div>
-          </div>
-        </RetroCard>
+          </WFCard>
+        </section>
+      )}
 
-        {/* Popular Lyrics */}
-        <RetroCard variant="secondary" className="p-6 hover:bg-black/40 transition-all duration-300">
-          <h2 className="text-xl font-bold text-gradient mb-4">
-            Popular Lyrics
-          </h2>
-          <div className="space-y-3">
-            {featuredAlbum.tracks?.slice(0, 3).map((track) => (
-              <Link
-                key={track.id}
-                href={`/lyrics/${track.slug}`}
-                className="block group"
-                prefetch={true}
-              >
-                <div className="p-3 rounded-lg bg-black/20 hover:bg-black/40 border border-accent-teal/10 hover:border-accent-green/30 transition-all duration-300">
-                  <div className="flex justify-between items-center">
-                    <div className="flex-1">
-                      <h3 className="text-sm font-medium text-white group-hover:text-accent-green transition-all duration-300">
-                        {track.title}
-                      </h3>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {featuredAlbum.title}
-                      </p>
-                    </div>
-                    <span className="text-xs text-gray-500 ml-4">
-                      {track.duration}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-            <div className="text-center pt-2">
-              <Link 
-                href="/lyrics" 
-                className="btn-retro text-sm"
-                prefetch={true}
-              >
-                View All Lyrics
-              </Link>
-            </div>
-          </div>
-        </RetroCard>
-      </div>
-
-      {/* Community Section */}
-      <RetroCard variant="primary" className="p-8 text-center hover-lift">
-        <h2 className="text-3xl font-bold text-gradient mb-4 cosmic-glow">
-          Join the Community
+      {/* Community Links */}
+      <section>
+        <h2 className="font-display text-2xl text-text-primary text-center mb-6">
+          Connect
         </h2>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          Connect with other WookieFoot fans, share your interpretations, and
-          discover new perspectives on your favorite songs.
-        </p>
-        <div className="mt-8 flex justify-center gap-4">
-          <Link 
-            href="/about" 
-            className="btn-retro"
-            prefetch={true}
-          >
-            Learn More
-          </Link>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-retro bg-gradient-teal-brown hover:bg-gradient-green-orange"
-          >
-            Follow on Spotify
-          </a>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <WFCard className="border border-[#D4C5A9] rounded-xl p-6 hover:shadow-md transition-shadow">
+            <h3 className="font-display text-accent-primary text-lg">YouTube</h3>
+            <p className="text-text-secondary text-sm mt-2 font-body">
+              Official YouTube channel with live performances and music videos
+            </p>
+            <a
+              href="https://www.youtube.com/@wookiefootmark"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-accent-primary text-sm font-body hover:underline"
+            >
+              Visit &rarr;
+            </a>
+          </WFCard>
+
+          <WFCard className="border border-[#D4C5A9] rounded-xl p-6 hover:shadow-md transition-shadow">
+            <h3 className="font-display text-accent-primary text-lg">Shangri-La</h3>
+            <p className="text-text-secondary text-sm mt-2 font-body">
+              Annual music festival in Minnesota &mdash; Labor Day Weekend
+            </p>
+            <a
+              href="https://www.shangrilafest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-accent-primary text-sm font-body hover:underline"
+            >
+              Visit &rarr;
+            </a>
+          </WFCard>
+
+          <WFCard className="border border-[#D4C5A9] rounded-xl p-6 hover:shadow-md transition-shadow">
+            <h3 className="font-display text-accent-primary text-lg">Be The Change</h3>
+            <p className="text-text-secondary text-sm mt-2 font-body">
+              501(c)(3) charity &mdash; $500K+ donated to communities
+            </p>
+            <a
+              href="https://www.bethechangecharities.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-accent-primary text-sm font-body hover:underline"
+            >
+              Visit &rarr;
+            </a>
+          </WFCard>
+
+          <WFCard className="border border-[#D4C5A9] rounded-xl p-6 hover:shadow-md transition-shadow">
+            <h3 className="font-display text-accent-primary text-lg">Bandcamp</h3>
+            <p className="text-text-secondary text-sm mt-2 font-body">
+              Support the band &mdash; buy their music
+            </p>
+            <a
+              href="https://wookiefoot.bandcamp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-accent-primary text-sm font-body hover:underline"
+            >
+              Visit &rarr;
+            </a>
+          </WFCard>
         </div>
-      </RetroCard>
+      </section>
     </div>
   );
 }

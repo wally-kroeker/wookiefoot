@@ -5,7 +5,6 @@ slug: welcome-home
 description: ''
 duration: ''
 youtubeUrl: ''
-spotifyUrl: ''
 tags: []
 contributors: []
 ---

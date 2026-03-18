@@ -10,10 +10,6 @@ export interface AlbumMetadata {
     thumbnail: string;
   };
   media?: {
-    spotify?: {
-      albumId: string;
-      uri: string;
-    };
     youtube?: {
       playlistId: string;
       url: string;
@@ -29,10 +25,6 @@ export interface TrackMetadata {
   lyricsStatus: 'complete' | 'incomplete';
   syncedLyrics?: string;
   media?: {
-    spotify?: {
-      trackId: string;
-      uri: string;
-    };
     youtube?: {
       videoId: string;
       url: string;
@@ -42,12 +34,13 @@ export interface TrackMetadata {
 
 export interface LyricsMetadata {
   title: string;
-  album: string;
+  albumId: string;
   track: number;
   year: number;
   description?: string;
   contributors?: string[];
   tags?: string[];
   syncedLyrics?: string;
+  youtubeVideoId?: string;
   media?: TrackMetadata['media'];
 }

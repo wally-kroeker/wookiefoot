@@ -1,16 +1,16 @@
 ---
 albumId: writing-on-the-wall
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for All Over Again by WookieFoot
 id: all-over-again
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: All Over Again
 trackNumber: '2'
 youtubeUrl: ''
+youtubeVideoId: PLACEHOLDER
 ---
 
 (Intro)

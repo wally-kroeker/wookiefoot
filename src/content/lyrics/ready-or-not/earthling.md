@@ -1,16 +1,16 @@
 ---
-albumId: ready-or-not...
+albumId: ready-or-not
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Earthling by WookieFoot
 id: earthling
-spotifyUrl: ''
 tags:
-- lyrics
+  - lyrics
 title: Earthling
 trackNumber: '3'
-youtubeUrl: https://music.youtube.com/watch?v=jHkyuvjjM_g&list=MLCT
+youtubeUrl: 'https://music.youtube.com/watch?v=jHkyuvjjM_g&list=MLCT'
+youtubeVideoId: PLACEHOLDER
 ---
 
 I'm an earthling and you're a earthling

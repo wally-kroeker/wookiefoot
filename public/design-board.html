@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WookieFoot Redesign - Design Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* OPTION A: "Festival Campfire" - Warm Earth */
+    --forest: #2D5016;
+    --forest-light: #4A7C28;
+    --amber: #D4910A;
+    --amber-light: #E8A832;
+    --burnt-orange: #C2571A;
+    --earth-brown: #5C3D2E;
+    --earth-dark: #2C1810;
+    --cream: #F5F0E8;
+    --cream-warm: #EDE4D3;
+    --sage: #8B9A6B;
+    --deep-purple: #4A2C6A;
+    --sunset: #E07B39;
+
+    /* OPTION B: "Sacred Night" - Deep & Mystical */
+    --night-bg: #1A1A2E;
+    --night-card: #24243E;
+    --gold: #C9A84C;
+    --gold-light: #E0C068;
+    --teal: #3A8A7C;
+    --teal-light: #5AB5A5;
+    --warm-white: #F0EAD6;
+    --muted-rose: #C47D7D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--earth-dark);
+    line-height: 1.6;
+  }
+
+  .board-header {
+    background: var(--earth-dark);
+    color: var(--cream);
+    padding: 40px;
+    text-align: center;
+  }
+  .board-header h1 {
+    font-family: 'Righteous', sans-serif;
+    font-size: 2.5rem;
+    color: var(--amber);
+  }
+  .board-header p {
+    color: var(--cream-warm);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .section-title {
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.8rem;
+    color: var(--forest);
+    margin-bottom: 8px;
+    border-bottom: 3px solid var(--amber);
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+
+  .section-desc {
+    color: var(--earth-brown);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .signoff-badge {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--earth-dark);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  /* ===== DIRECTION ===== */
+  .direction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) { .direction-grid { grid-template-columns: 1fr; } }
+
+  .direction-card {
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .direction-card h3 {
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  .direction-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .direction-card ul li {
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .direction-card ul li::before {
+    content: "~";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  .option-a {
+    background: linear-gradient(135deg, var(--cream-warm) 0%, #E8DCC8 100%);
+    border: 2px solid var(--amber);
+  }
+  .option-a h3 { color: var(--forest); }
+  .option-a li::before { color: var(--amber); }
+
+  .option-b {
+    background: linear-gradient(135deg, var(--night-bg) 0%, var(--night-card) 100%);
+    border: 2px solid var(--gold);
+    color: var(--warm-white);
+  }
+  .option-b h3 { color: var(--gold); }
+  .option-b li::before { color: var(--gold); }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 2px;
+  }
+  .tag-recommended { background: var(--forest); color: var(--cream); }
+  .tag-alternative { background: var(--deep-purple); color: var(--cream); }
+
+  /* ===== COLORS ===== */
+  .palette-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .color-swatch {
+    width: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: white;
+  }
+  .color-swatch .swatch {
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px;
+  }
+  .color-swatch .swatch span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+  }
+  .color-swatch .label {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .color-swatch .label small {
+    display: block;
+    color: #999;
+    font-size: 0.65rem;
+  }
+
+  .palette-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--earth-brown);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .type-sample {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .type-sample.dark {
+    background: var(--earth-dark);
+    color: var(--cream);
+  }
+  .type-heading {
+    font-family: 'Righteous', sans-serif;
+    margin-bottom: 16px;
+  }
+  .type-body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
+  .type-accent {
+    font-family: 'Lora', serif;
+    font-style: italic;
+  }
+  .type-meta {
+    font-size: 0.75rem;
+    color: var(--sage);
+    margin-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== COMPONENTS ===== */
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  /* Album Card Mockup */
+  .album-card-mock {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .album-card-mock:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+  .album-art-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 50%, var(--amber) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.5rem;
+    position: relative;
+  }
+  .album-art-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+  .album-card-info {
+    padding: 20px;
+  }
+  .album-card-info h4 {
+    font-family: 'Righteous', sans-serif;
+    color: var(--forest);
+    font-size: 1.1rem;
+  }
+  .album-card-info p {
+    color: var(--earth-brown);
+    font-size: 0.85rem;
+    font-weight: 300;
+  }
+  .album-card-info .year {
+    color: var(--amber);
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  /* Song/Lyrics Card Mockup */
+  .lyrics-card-mock {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--amber);
+  }
+  .lyrics-card-mock h4 {
+    font-family: 'Righteous', sans-serif;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+  .lyrics-card-mock .album-name {
+    font-size: 0.8rem;
+    color: var(--amber);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .lyrics-card-mock .lyrics-preview {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--earth-brown);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    border-left: 2px solid var(--cream-warm);
+    padding-left: 16px;
+  }
+  .yt-embed-mock {
+    background: #1a1a1a;
+    border-radius: 8px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 16px;
+    position: relative;
+  }
+  .yt-embed-mock .play-btn {
+    width: 48px;
+    height: 48px;
+    background: #ff0000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .yt-embed-mock .play-btn::after {
+    content: "";
+    border-left: 16px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    margin-left: 4px;
+  }
+
+  /* Button Mockups */
+  .btn-primary {
+    display: inline-block;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: var(--forest-light);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--forest);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 2px solid var(--forest);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .btn-amber {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--earth-dark);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-amber:hover {
+    background: var(--amber-light);
+  }
+
+  .buttons-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  /* ===== NAV MOCKUP ===== */
+  .nav-mock {
+    background: var(--earth-dark);
+    border-radius: 12px;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .nav-mock .brand {
+    font-family: 'Righteous', sans-serif;
+    color: var(--amber);
+    font-size: 1.3rem;
+  }
+  .nav-mock .links {
+    display: flex;
+    gap: 24px;
+  }
+  .nav-mock .links a {
+    color: var(--cream-warm);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-mock .links a:hover { color: var(--amber); }
+
+  /* ===== HERO MOCKUP ===== */
+  .hero-mock {
+    background: linear-gradient(135deg, var(--earth-dark) 0%, var(--forest) 60%, var(--sage) 100%);
+    border-radius: 16px;
+    padding: 64px 48px;
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .hero-mock::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='30' fill='none' stroke='rgba(212,145,10,0.08)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='20' fill='none' stroke='rgba(212,145,10,0.05)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='10' fill='none' stroke='rgba(212,145,10,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+  .hero-mock h2 {
+    font-family: 'Righteous', sans-serif;
+    font-size: 2.8rem;
+    color: var(--amber);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-mock p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cream-warm);
+    max-width: 600px;
+    margin: 16px auto 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-mock .hero-buttons {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* ===== COMMUNITY SECTION MOCKUP ===== */
+  .community-mock {
+    background: var(--cream-warm);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 24px;
+  }
+  .community-mock h3 {
+    font-family: 'Righteous', sans-serif;
+    color: var(--forest);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .community-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .community-link {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .community-link:hover { transform: translateY(-2px); }
+  .community-link .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  .community-link .name {
+    font-weight: 600;
+    color: var(--forest);
+    font-size: 0.9rem;
+  }
+  .community-link .desc {
+    font-size: 0.75rem;
+    color: var(--earth-brown);
+    font-weight: 300;
+  }
+
+  /* ===== FOOTER MOCKUP ===== */
+  .footer-mock {
+    background: var(--earth-dark);
+    border-radius: 12px;
+    padding: 32px;
+    color: var(--cream-warm);
+    text-align: center;
+    margin-top: 24px;
+  }
+  .footer-mock .brand {
+    font-family: 'Righteous', sans-serif;
+    color: var(--amber);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .footer-mock p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--sage);
+  }
+  .footer-mock .footer-links {
+    margin: 12px 0;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+  .footer-mock .footer-links a {
+    color: var(--cream-warm);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+  .footer-mock .footer-links a:hover { color: var(--amber); }
+
+  /* ===== LAYOUT MOCKUP ===== */
+  .layout-section {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 32px;
+  }
+  .layout-section h3 {
+    font-family: 'Righteous', sans-serif;
+    color: var(--forest);
+    margin-bottom: 16px;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber), transparent);
+    margin: 48px 0;
+  }
+
+  /* Decision Box */
+  .decision-box {
+    background: #FFF8E7;
+    border: 2px dashed var(--amber);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+  .decision-box h4 {
+    color: var(--burnt-orange);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .decision-box p {
+    font-size: 0.85rem;
+    color: var(--earth-brown);
+  }
+
+  /* Info Callout */
+  .info-callout {
+    background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+    border-left: 4px solid var(--forest);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .info-callout h4 {
+    color: var(--forest);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  .info-callout p {
+    font-size: 0.85rem;
+    color: var(--earth-brown);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="board-header">
+  <h1>WookieFoot Redesign</h1>
+  <p>Design Board v2.0 &mdash; Review each section and sign off before we build</p>
+</div>
+
+<!-- SECTION 1: DESIGN DIRECTION -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #1: Direction</div>
+  <h2 class="section-title">Design Direction</h2>
+  <p class="section-desc">Both themes ship. Users toggle between light and dark mode. Each has its own personality — not just inverted colors.</p>
+
+  <div class="direction-grid">
+    <div class="direction-card option-a">
+      <span class="tag tag-recommended">Light Mode (Default)</span>
+      <h3>&#9788; "Festival Campfire"</h3>
+      <p style="margin-bottom:12px; font-size:0.9rem;">Warm, inviting, earthy. Like sitting around a fire at Shangri-La. Cream backgrounds, forest greens, amber accents. The default for newcomers discovering WookieFoot.</p>
+      <ul>
+        <li>Light/warm backgrounds (cream, canvas)</li>
+        <li>Forest green + amber gold as primary colors</li>
+        <li>Organic textures, sacred geometry patterns</li>
+        <li>Approachable, welcoming, community feel</li>
+        <li>Default for first-time visitors</li>
+      </ul>
+    </div>
+    <div class="direction-card option-b">
+      <span class="tag tag-alternative">Dark Mode</span>
+      <h3>&#9790; "Sacred Night"</h3>
+      <p style="margin-bottom:12px; font-size:0.9rem;">Deep, mystical, cosmic. Like the night sky at a festival. Dark earth backgrounds with gold and teal accents. An immersive reading experience for lyrics.</p>
+      <ul>
+        <li>Earth-dark backgrounds (deep brown, charcoal)</li>
+        <li>Gold + teal as primary accents</li>
+        <li>Cosmic textures, subtle mandala overlays</li>
+        <li>Immersive, contemplative reading experience</li>
+        <li>Toggle via sun/moon icon in nav</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-callout">
+    <h4>Both Ship</h4>
+    <p>Light mode is the default (welcoming for new fans). Dark mode is one click away (sun/moon toggle in the nav bar). User preference is saved to localStorage so it persists across visits. Both themes share the same layout and components — only colors and textures change.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 2: COLOR PALETTE -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #2: Colors</div>
+  <h2 class="section-title">Color Palette</h2>
+  <p class="section-desc">Derived from WookieFoot's album art and festival aesthetic. Earth tones + sacred gold.</p>
+
+  <div class="palette-label">Primary Colors</div>
+  <div class="palette-row">
+    <div class="color-swatch">
+      <div class="swatch" style="background: #2D5016;"><span>#2D5016</span></div>
+      <div class="label">Forest Green<small>Primary / Headers</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #4A7C28;"><span>#4A7C28</span></div>
+      <div class="label">Forest Light<small>Hover states</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #D4910A;"><span>#D4910A</span></div>
+      <div class="label">Amber Gold<small>Accents / CTAs</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #E8A832;"><span>#E8A832</span></div>
+      <div class="label">Amber Light<small>Highlights</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #C2571A;"><span>#C2571A</span></div>
+      <div class="label">Burnt Orange<small>Warm accent</small></div>
+    </div>
+  </div>
+
+  <div class="palette-label">Neutral & Background</div>
+  <div class="palette-row">
+    <div class="color-swatch">
+      <div class="swatch" style="background: #F5F0E8;"><span>#F5F0E8</span></div>
+      <div class="label">Cream<small>Page background</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #EDE4D3;"><span>#EDE4D3</span></div>
+      <div class="label">Warm Cream<small>Card backgrounds</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #5C3D2E; color: white;"><span style="background: rgba(0,0,0,0.5);">#5C3D2E</span></div>
+      <div class="label">Earth Brown<small>Body text</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #2C1810; color: white;"><span style="background: rgba(0,0,0,0.5);">#2C1810</span></div>
+      <div class="label">Earth Dark<small>Nav / Footer</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #8B9A6B;"><span>#8B9A6B</span></div>
+      <div class="label">Sage<small>Muted / secondary</small></div>
+    </div>
+  </div>
+
+  <div class="palette-label" style="margin-top: 32px;">Dark Mode Colors (Sacred Night)</div>
+  <div class="palette-row">
+    <div class="color-swatch">
+      <div class="swatch" style="background: #1A1A2E; color: white;"><span style="background: rgba(255,255,255,0.2);">#1A1A2E</span></div>
+      <div class="label">Night Sky<small>Page background</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #24243E; color: white;"><span style="background: rgba(255,255,255,0.2);">#24243E</span></div>
+      <div class="label">Night Card<small>Card / surface</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #C9A84C;"><span>#C9A84C</span></div>
+      <div class="label">Sacred Gold<small>Primary accent</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #3A8A7C;"><span>#3A8A7C</span></div>
+      <div class="label">Teal<small>Secondary accent</small></div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch" style="background: #F0EAD6;"><span>#F0EAD6</span></div>
+      <div class="label">Warm White<small>Text on dark</small></div>
+    </div>
+  </div>
+
+  <div class="info-callout">
+    <h4>Palette Rationale</h4>
+    <p>Light mode colors come from WookieFoot's album art: forest greens, earth browns, amber gold, warm cream. Dark mode shifts to night-sky depths with sacred gold and teal — like sitting under the stars at Shangri-La. Both palettes share amber/gold as the connective thread. No cold blues, no neon, no cyberpunk.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 3: TYPOGRAPHY -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #3: Typography</div>
+  <h2 class="section-title">Typography</h2>
+  <p class="section-desc">Three fonts, each with a role. UIUXProMax recommended Righteous + Poppins for music/festivals.</p>
+
+  <div class="type-sample">
+    <div class="type-meta">Headings &mdash; Righteous (Display)</div>
+    <div class="type-heading" style="font-size: 2.5rem; color: var(--forest);">WookieFoot</div>
+    <div class="type-heading" style="font-size: 1.8rem; color: var(--earth-dark);">Ready or Not...</div>
+    <div class="type-heading" style="font-size: 1.3rem; color: var(--amber);">Be Fearless and Play</div>
+    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--sage);">Righteous has a warm, playful, hand-crafted feel. Perfect for a band that calls themselves "a circus, a philosophy, and a community."</p>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-meta">Body &mdash; Poppins (Sans-serif)</div>
+    <div class="type-body" style="font-size: 1rem;">
+      Wookiefoot is a band, a 501C3 Non-Profit Charity Organization, a circus, a philosophy, and a community of globe trekking bliss junkies and believers. Their live show mixes Reggae, World Beat, Hip Hop, Irish, Funk, Folk, Rock & more.
+    </div>
+    <div class="type-body" style="font-size: 0.85rem; margin-top: 8px; color: var(--earth-brown);">
+      <strong style="font-weight: 600;">Bold for emphasis</strong> &bull; Regular for body &bull; <span style="font-weight: 300;">Light for supporting text</span>
+    </div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-meta">Lyrics & Quotes &mdash; Lora (Serif, Italic)</div>
+    <div class="type-accent" style="font-size: 1.2rem; color: var(--earth-brown); line-height: 2;">
+      "You never really should take it personal<br>
+      Sometimes being a person is a curse when all<br>
+      That shit that comes with it just gets worse and<br>
+      All you can do is let it go and forgive it all"
+    </div>
+    <p style="margin-top: 8px; font-size: 0.8rem; color: var(--sage);">&mdash; Let Yourself Go, Ready or Not (2012)</p>
+  </div>
+
+  <div class="type-sample dark">
+    <div class="type-meta" style="color: var(--amber);">Dark Context (Nav / Footer)</div>
+    <div class="type-heading" style="font-size: 1.8rem; color: var(--amber);">WookieFoot</div>
+    <div class="type-body" style="color: var(--cream-warm);">The same fonts work beautifully on dark backgrounds for navigation and footer areas.</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 4: COMPONENTS -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #4: Components</div>
+  <h2 class="section-title">Component Style</h2>
+  <p class="section-desc">How albums, lyrics, and UI elements will look. Rounded, warm, with subtle depth.</p>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin-bottom: 16px;">Navigation</h3>
+  <div class="nav-mock">
+    <div class="brand">WookieFoot</div>
+    <div class="links">
+      <a href="#">Albums</a>
+      <a href="#">Lyrics</a>
+      <a href="#">Community</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin-bottom: 16px;">Hero Section</h3>
+  <div class="hero-mock">
+    <h2>WookieFoot</h2>
+    <p>"A band, a circus, a philosophy, and a community of globe trekking bliss junkies and believers"</p>
+    <div class="hero-buttons">
+      <button class="btn-amber">Explore Albums</button>
+      <button class="btn-secondary" style="color: var(--cream); border-color: var(--cream);">Watch on YouTube</button>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 24px 0 16px;">Album Cards</h3>
+  <div class="components-grid">
+    <div class="album-card-mock">
+      <div class="album-art-placeholder">Album Art Here</div>
+      <div class="album-card-info">
+        <span class="year">2012</span>
+        <h4>Ready or Not...</h4>
+        <p>13 tracks &bull; 33 min</p>
+      </div>
+    </div>
+    <div class="album-card-mock">
+      <div class="album-art-placeholder" style="background: linear-gradient(135deg, var(--earth-brown) 0%, var(--burnt-orange) 50%, var(--amber) 100%);">Album Art Here</div>
+      <div class="album-card-info">
+        <span class="year">2015</span>
+        <h4>You're It!</h4>
+        <p>17 tracks &bull; 47 min</p>
+      </div>
+    </div>
+    <div class="album-card-mock">
+      <div class="album-art-placeholder" style="background: linear-gradient(135deg, var(--sage) 0%, var(--forest) 50%, var(--earth-dark) 100%);">Album Art Here</div>
+      <div class="album-card-info">
+        <span class="year">2021</span>
+        <h4>Writing on the Wall</h4>
+        <p>12 tracks &bull; 45 min</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 32px 0 16px;">Lyrics Page with YouTube Embed</h3>
+  <div class="lyrics-card-mock">
+    <h4>Let Yourself Go</h4>
+    <div class="album-name">Ready or Not... (2012) &bull; Track 9</div>
+    <div class="lyrics-preview">
+      You never really should take it personal<br>
+      Sometimes being a person is a curse when all<br>
+      That shit that comes with it just gets worse and<br>
+      All you can do is let it go and forgive it all
+    </div>
+    <div class="yt-embed-mock">
+      <div class="play-btn"></div>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--sage); margin-top: 8px; text-align: center;">YouTube video embedded when available</p>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 48px 0 16px; padding-top: 32px; border-top: 2px solid var(--cream-warm);">&#9790; Dark Mode Variants</h3>
+  <p style="color: var(--earth-brown); font-weight: 300; margin-bottom: 24px;">Same components, Sacred Night palette. Not inverted — redesigned for the dark context.</p>
+
+  <!-- Dark Nav -->
+  <div class="nav-mock" style="background: #1A1A2E; border: 1px solid #3A3A5E;">
+    <div class="brand" style="color: #C9A84C;">WookieFoot</div>
+    <div class="links">
+      <a href="#" style="color: #F0EAD6;">Albums</a>
+      <a href="#" style="color: #F0EAD6;">Lyrics</a>
+      <a href="#" style="color: #F0EAD6;">Community</a>
+      <a href="#" style="color: #3A8A7C;">&#9790;</a>
+    </div>
+  </div>
+
+  <!-- Dark Hero -->
+  <div class="hero-mock" style="background: linear-gradient(135deg, #1A1A2E 0%, #24243E 60%, #2A2A4E 100%); margin-bottom: 24px;">
+    <h2 style="color: #C9A84C;">WookieFoot</h2>
+    <p style="color: #F0EAD6;">"A band, a circus, a philosophy, and a community of globe trekking bliss junkies and believers"</p>
+    <div class="hero-buttons">
+      <button class="btn-amber" style="background: #C9A84C; color: #1A1A2E;">Explore Albums</button>
+      <button class="btn-secondary" style="color: #3A8A7C; border-color: #3A8A7C;">Watch on YouTube</button>
+    </div>
+  </div>
+
+  <!-- Dark Album Card -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
+    <div style="background: #24243E; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+      <div class="album-art-placeholder" style="background: linear-gradient(135deg, #3A8A7C 0%, #24243E 50%, #C9A84C 100%);">Album Art Here</div>
+      <div style="padding: 20px;">
+        <span style="color: #C9A84C; font-weight: 600; font-size: 0.8rem;">2012</span>
+        <h4 style="font-family: 'Righteous'; color: #F0EAD6; font-size: 1.1rem;">Ready or Not...</h4>
+        <p style="color: #8B9A6B; font-size: 0.85rem; font-weight: 300;">13 tracks &bull; 33 min</p>
+      </div>
+    </div>
+    <!-- Dark Lyrics Card -->
+    <div style="background: #24243E; border-radius: 16px; padding: 24px; border-left: 4px solid #C9A84C;">
+      <h4 style="font-family: 'Righteous'; color: #C9A84C; margin-bottom: 4px;">Let Yourself Go</h4>
+      <div style="font-size: 0.8rem; color: #3A8A7C; font-weight: 500; margin-bottom: 12px;">Ready or Not... (2012)</div>
+      <div style="font-family: 'Lora', serif; font-style: italic; color: #F0EAD6; line-height: 1.8; font-size: 0.95rem; border-left: 2px solid #3A3A5E; padding-left: 16px;">
+        You never really should take it personal<br>
+        Sometimes being a person is a curse when all<br>
+        That shit that comes with it just gets worse and<br>
+        All you can do is let it go and forgive it all
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 32px 0 16px;">Buttons</h3>
+  <div class="buttons-row">
+    <button class="btn-primary">Explore Albums</button>
+    <button class="btn-secondary">View Lyrics</button>
+    <button class="btn-amber">Watch on YouTube</button>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 32px 0 16px;">Community Section</h3>
+  <div class="community-mock">
+    <h3>Join the Community</h3>
+    <div class="community-links">
+      <div class="community-link">
+        <div class="icon">&#9654;</div>
+        <div class="name">YouTube</div>
+        <div class="desc">Music videos & live shows</div>
+      </div>
+      <div class="community-link">
+        <div class="icon">&#9733;</div>
+        <div class="name">Shangri-La Festival</div>
+        <div class="desc">Labor Day Weekend, MN</div>
+      </div>
+      <div class="community-link">
+        <div class="icon">&#9825;</div>
+        <div class="name">Be The Change</div>
+        <div class="desc">501c3 charity &bull; $500K+ donated</div>
+      </div>
+      <div class="community-link">
+        <div class="icon">&#9883;</div>
+        <div class="name">Facebook</div>
+        <div class="desc">Community updates</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 32px 0 16px;">Footer</h3>
+  <div class="footer-mock">
+    <div class="brand">WookieFoot</div>
+    <div class="footer-links">
+      <a href="#">Albums</a>
+      <a href="#">Lyrics</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+      <a href="#">Shangri-La</a>
+      <a href="#">Be The Change</a>
+    </div>
+    <p>Fan-made lyrics site &bull; Not affiliated with the band &bull; Made with love</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 5: SITE STRUCTURE -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #5: Site Structure</div>
+  <h2 class="section-title">Page Structure</h2>
+  <p class="section-desc">Simplified navigation focused on discovery and lyrics.</p>
+
+  <div class="layout-section">
+    <h3>Pages</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Home</strong> &mdash; Hero + band intro, featured video, latest album, community links
+      </li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Albums</strong> &mdash; Chronological grid with cover art, year, track count
+      </li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Album Detail</strong> &mdash; Album info + full track list with links
+      </li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Lyrics</strong> &mdash; Song lyrics with YouTube embed, album navigation, prev/next
+      </li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Community</strong> <span style="color: var(--amber);">(NEW)</span> &mdash; YouTube, Facebook, Shangri-La Fest, Be The Change Charities, Bandcamp, Instagram
+      </li>
+      <li style="padding: 12px 0;">
+        <strong style="color: var(--forest);">Search</strong> <span style="color: var(--amber);">(UPGRADED)</span> &mdash; Fuzzy lyrics search — type a fragment, find the song. Highlights matching snippets. Instant, typo-tolerant.
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-callout">
+    <h4>What's Changing</h4>
+    <p><strong>Removing:</strong> Spotify links (everywhere), About page (merged into Home), animated particles, glass-morphism, cyberpunk theme, CursorTrail<br>
+    <strong>Adding:</strong> Light/dark mode toggle, YouTube embeds on lyrics pages, fuzzy lyrics search (Fuse.js), Community page, Be The Change section, festival content, proper band introduction for new fans</p>
+  </div>
+
+  <div class="decision-box">
+    <h4>Key Decision: YouTube Integration</h4>
+    <p>25 of ~145 songs have YouTube videos. For those 25, we embed the video player directly on the lyrics page. For the remaining ~120 songs, we show a "Listen on Bandcamp" link instead. Sound right?</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 6: LYRICS SEARCH -->
+<div class="section">
+  <div class="signoff-badge">Sign-Off #6: Lyrics Search</div>
+  <h2 class="section-title">Lyrics Search</h2>
+  <p class="section-desc">Find songs by typing remembered lyrics, phrases, or even vague descriptions. The killer feature of a lyrics site.</p>
+
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin-bottom: 16px;">Search Experience</h3>
+
+  <!-- Search mockup -->
+  <div style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px;">
+    <!-- Search bar -->
+    <div style="position: relative; margin-bottom: 24px;">
+      <div style="background: var(--cream); border: 2px solid var(--forest); border-radius: 12px; padding: 16px 20px; font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--earth-brown); display: flex; align-items: center; gap: 12px;">
+        <span style="color: var(--sage); font-size: 1.2rem;">&#128269;</span>
+        <span style="color: var(--earth-brown);">let it go and forgive it all</span>
+        <span style="margin-left: auto; background: var(--forest); color: var(--cream); padding: 6px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">Search</span>
+      </div>
+      <div style="font-size: 0.75rem; color: var(--sage); margin-top: 6px; padding-left: 4px;">Search across all 145 songs &bull; Finds partial matches, handles typos</div>
+    </div>
+
+    <!-- Results -->
+    <div style="font-weight: 600; color: var(--forest); font-size: 0.85rem; margin-bottom: 12px;">3 results for "let it go and forgive it all"</div>
+
+    <!-- Result 1 - exact match -->
+    <div style="background: var(--cream); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; border-left: 4px solid var(--amber); cursor: pointer;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <div>
+          <span style="font-family: 'Righteous'; color: var(--forest); font-size: 1rem;">Let Yourself Go</span>
+          <span style="color: var(--amber); font-size: 0.8rem; margin-left: 8px;">Ready or Not... (2012)</span>
+        </div>
+        <span style="background: var(--forest); color: var(--cream); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 600;">BEST MATCH</span>
+      </div>
+      <div style="font-family: 'Lora', serif; font-style: italic; color: var(--earth-brown); margin-top: 8px; font-size: 0.9rem;">
+        "...That shit that comes with it just gets worse and / All you can do is <mark style="background: var(--amber-light); padding: 0 2px; border-radius: 2px;">let it go and forgive it all</mark>"
+      </div>
+    </div>
+
+    <!-- Result 2 - partial match -->
+    <div style="background: var(--cream); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; border-left: 4px solid var(--sage); cursor: pointer;">
+      <div>
+        <span style="font-family: 'Righteous'; color: var(--forest); font-size: 1rem;">Let Her Go</span>
+        <span style="color: var(--amber); font-size: 0.8rem; margin-left: 8px;">Out of the Jar (2003)</span>
+      </div>
+      <div style="font-family: 'Lora', serif; font-style: italic; color: var(--earth-brown); margin-top: 8px; font-size: 0.9rem;">
+        "...<mark style="background: #E8F5E9; padding: 0 2px; border-radius: 2px;">let</mark> her <mark style="background: #E8F5E9; padding: 0 2px; border-radius: 2px;">go</mark>, let her <mark style="background: #E8F5E9; padding: 0 2px; border-radius: 2px;">go</mark>..."
+      </div>
+    </div>
+
+    <!-- Result 3 - fuzzy match -->
+    <div style="background: var(--cream); border-radius: 12px; padding: 16px 20px; border-left: 4px solid var(--cream-warm); cursor: pointer;">
+      <div>
+        <span style="font-family: 'Righteous'; color: var(--forest); font-size: 1rem;">Lose Your Mind</span>
+        <span style="color: var(--amber); font-size: 0.8rem; margin-left: 8px;">Ready or Not... (2012)</span>
+      </div>
+      <div style="font-family: 'Lora', serif; font-style: italic; color: var(--earth-brown); margin-top: 8px; font-size: 0.9rem;">
+        "...<mark style="background: #E8F5E9; padding: 0 2px; border-radius: 2px;">let it all go</mark>..."
+      </div>
+    </div>
+  </div>
+
+  <!-- Architecture decision -->
+  <h3 style="font-family: 'Righteous'; color: var(--forest); margin: 32px 0 16px;">How It Works</h3>
+  <div class="layout-section">
+    <h3 style="color: var(--amber);">Architecture: Client-Side Fuzzy Search (Fuse.js)</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li style="padding: 10px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">How:</strong> All ~145 songs' lyrics loaded client-side (~300KB). Fuse.js performs instant fuzzy matching.
+      </li>
+      <li style="padding: 10px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Typo tolerance:</strong> "forgve it al" still finds "forgive it all" — Fuse.js uses Bitap approximate string matching.
+      </li>
+      <li style="padding: 10px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Instant:</strong> No server round-trip. Results appear as you type. Works offline.
+      </li>
+      <li style="padding: 10px 0; border-bottom: 1px solid var(--cream-warm);">
+        <strong style="color: var(--forest);">Cost:</strong> Zero. No API, no database, no external service. Pure client-side JavaScript.
+      </li>
+      <li style="padding: 10px 0;">
+        <strong style="color: var(--forest);">Highlighted snippets:</strong> Matching phrases highlighted in context so users can verify the match before clicking.
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-callout">
+    <h4>Why Not AI Search?</h4>
+    <p>With only ~145 songs, fuzzy text search handles 95% of use cases — including "I remember something about forgiveness" matching lyrics with "forgive." AI semantic search (embeddings + vector DB) adds cost and complexity for marginal improvement at this scale. <strong>Phase 2 idea:</strong> An optional "Describe the song" AI button for truly vague queries — but only if basic search falls short.</p>
+  </div>
+
+  <div class="decision-box">
+    <h4>Key Decision: Search Approach</h4>
+    <p>Fuse.js client-side fuzzy search ships with the redesign. Zero cost, instant results, typo-tolerant. If users consistently can't find what they want, we add AI semantic search later as an enhancement. Sound right?</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FINAL SIGNOFF -->
+<div class="section" style="text-align: center; padding-bottom: 64px;">
+  <div class="signoff-badge">Final Review</div>
+  <h2 class="section-title" style="display: block; border: none;">Ready to Build?</h2>
+  <p class="section-desc" style="max-width: 600px; margin: 0 auto 24px;">Review each section above. Give feedback on anything that doesn't feel right. When you're happy with the direction, we start building.</p>
+  <div class="buttons-row" style="justify-content: center;">
+    <button class="btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">Let's Build This</button>
+  </div>
+</div>
+
+</body>
+</html>

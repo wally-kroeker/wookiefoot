@@ -1,104 +1,41 @@
 ---
 albumId: out-of-the-jar
 contributors:
-- WookieFoot
+  - WookieFoot
 createdAt: '2025-01-30'
 description: Lyrics for Ambition Less by WookieFoot
 id: ambition-less
-spotifyUrl: https://open.spotify.com/track/5PI3c6G0WzlLVW4RhxAf19
 tags:
-- lyrics
+  - lyrics
 title: Ambition Less
 trackNumber: '11'
-youtubeUrl: https://music.youtube.com/watch?v=dvfsquQvnhU&list=RDAOrjA6cttNfONQIe1vu50Cwg
+youtubeUrl: 'https://music.youtube.com/watch?v=dvfsquQvnhU&list=RDAOrjA6cttNfONQIe1vu50Cwg'
+sourceUrl: 'https://wookiefoot.com/track/2872603/ambition-less'
+validatedAt: 2025-11-06T00:00:00.000Z
 ---
 
-When he pulls back his bow
+Lyrics
+when he pulls back his bow
+and lets his arrow go
+with no target he can make no mistake
+but with a bull’s eye staring
+and too much caring
+for trophies and medals he might be wearing
+the archer’s hand will tremble and shake
 
-And lets his arrow go
-
-With no target he can make no mistake
-
-But with a bull's eye staring
-
-And too much caring
-
-For trophies and medals he might be wearing
-
-The archer's hand will tremble and shake
-
-
-
-Move your ass or just get out the way
-
-Gotta get it all done yesterday
-
-Push it to the redline
-
-Take it to the deadline
-
-Make it faster more efficient
-
-If I fall behind I'll never get a piece of mind
-
-I gotta scrap and claw and climb
-
-Because I'm running out of time
-
+move you ass or just get out the way
+gotta get it all done yesterday
+push it to the red line
+push it to the deadline
+make it faster more efficient
+if I fall behind I’ll never get a piece of mind
+i gotta scrap and claw and climb
+because I’m running out of time
 Ambition Less Ambition Less Ambition
 
-
-
-The realm of (?), true artist, the saint, the philosopher is rarely achieved. Why so few?
-
-
-
-One night on Easter Island, the king he had a dream
-
-Offer the gods a giant stone head
-
-(Why so few?)
-
-The sculpture was gorgeous
-
-The slavery enormous
-
-They had to cut down every tree in the forest
-
-A few years later everyone was dead
-
-
-
-When he pulls back his bow
-
-And lets his arrow go
-
-With no target he can make no mistake
-
-But with a bull's eye staring
-
-And too much caring
-
-For trophies and medals he might be wearing
-
-The archer's hand will tremble and shake
-
-
-
-Move your ass or just get out the way
-
-Gotta get it all done yesterday
-
-Push it to the redline
-
-Take it to the deadline
-
-Make it faster more efficient
-
-If I fall behind I'll never get a piece of mind
-
-I gotta scrap and claw and climb
-
-Because I'm running out of time
-
-Ambition Less Ambition Less Ambition
+one night on Easter island, the king he had a dream
+offer the gods a giant stone head
+the sculpture was gorgeous
+the slavery enormous
+they had to cut down every tree in the forest
+a few years later everyone was dead

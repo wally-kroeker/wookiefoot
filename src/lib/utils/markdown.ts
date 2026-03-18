@@ -8,9 +8,9 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolink from 'rehype-autolink-headings';
-import { visit } from 'unist-util-visit';
+import rehypeSanitize from 'rehype-sanitize';
 
-type LyricsStatus = 'Yes' | 'Failed' | 'Skipped';
+type LyricsStatus = 'Yes' | 'TRUE' | 'Failed' | 'Skipped';
 
 interface SongIndexEntry {
   Album: string;
@@ -32,7 +32,7 @@ function getBaseUrl(): string {
   // Server should use full URL
   return process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000';
+    : `http://localhost:${process.env.API_PORT || '3000'}`;
 }
 
 // Function to fetch song index from API
@@ -43,45 +43,6 @@ async function getSongIndex(): Promise<SongIndexEntry[]> {
   return data.songs;
 }
 
-// Function to convert song title to slug
-function titleToSlug(title: string): string {
-  return title
-    .toLowerCase()
-    // Special case for "St." -> "st."
-    .replace(/\bst\./g, 'st.')
-    // Replace all other non-alphanumeric characters with hyphens
-    .replace(/[^a-z0-9.]+/g, '-')
-    // Remove leading/trailing hyphens
-    .replace(/(^-|-$)/g, '');
-}
-
-// Function to convert album title to directory name
-function albumToDirectoryName(album: string): string {
-  return album
-    .toLowerCase()
-    .replace(/[''"]/g, '') // Remove apostrophes and quotes
-    .replace(/[^a-z0-9]+/g, '-') // Replace any non-alphanumeric with single hyphen
-    .replace(/-{2,}/g, '-') // Replace multiple hyphens with single hyphen
-    .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
-    .trim();
-}
-
-// Custom remark plugins for lyrics formatting
-function remarkLyricsPlugin() {
-  return function(tree: any) {
-    // Handle special characters and formatting
-    visit(tree, 'text', (node: any) => {
-      // Preserve line breaks
-      node.value = node.value.replace(/\\n/g, '\n');
-      // Handle em dashes
-      node.value = node.value.replace(/---/g, '—');
-      // Handle ellipsis
-      node.value = node.value.replace(/\.\.\./g, '…');
-      // Handle quotes
-      node.value = node.value.replace(/"([^"]*)"/g, '"$1"');
-    });
-  };
-}
 
 export async function processSongMarkdown(
   slug: string,
@@ -94,6 +55,7 @@ export async function processSongMarkdown(
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype)
+    .use(rehypeSanitize)
     .use(rehypeSlug)
     .use(rehypeAutolink, { behavior: 'wrap' })
     .use(rehypeStringify)
@@ -120,7 +82,7 @@ export async function processSongMarkdown(
   const song: ProcessedSong = {
     id: slug,
     title: metadata.title,
-    albumId: metadata.album,
+    albumId: metadata.albumId,
     description: metadata.description || '',
     duration: '--:--',
     tags: metadata.tags || [],
@@ -129,6 +91,7 @@ export async function processSongMarkdown(
     lyrics: processedLyrics,
     syncedLyrics: processedSyncedLyrics,
     media: metadata.media,
+    youtubeVideoId: metadata.youtubeVideoId,
     slug
   };
 
@@ -181,25 +144,31 @@ export function getAlbumUrl(albumId: string | number): string {
   return `/albums/${albumId}`;
 }
 
-export function formatTags(tags: string[] = []): string {
-  return tags.map(tag => `#${tag}`).join(' ');
+
+export function getBandcampAlbumUrl(albumTitle: string): string {
+  const slug = albumTitle
+    .toLowerCase()
+    .replace(/[''\"\.!?]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return `https://wookiefoot.bandcamp.com/album/${slug}`;
 }
 
-export function getYouTubeEmbedUrl(url: string = ''): string {
-  const videoId = url.split('v=')[1];
-  if (!videoId) return '';
-  return `https://www.youtube.com/embed/${videoId}`;
-}
-
-export function getSpotifyEmbedUrl(url: string = ''): string {
-  const trackId = url.split('track/')[1];
-  if (!trackId) return '';
-  return `https://open.spotify.com/embed/track/${trackId}`;
-}
+// Album release year lookup
+const albumYearMap: Record<string, string> = {
+  'Domesticated': '2000',
+  'Make Belief': '2001',
+  'Out of the Jar': '2003',
+  'Activate': '2006',
+  'Be Fearless and Play': '2009',
+  'Ready or Not...': '2012',
+  "You're It!": '2015',
+  'Writing on the Wall': '2021',
+};
 
 export async function getAllAlbums(): Promise<Album[]> {
   const songIndex = await getSongIndex();
-  
+
   // Group songs by album
   const albumMap = new Map<string, SongIndexEntry[]>();
   songIndex.forEach(entry => {
@@ -222,25 +191,28 @@ export async function getAllAlbums(): Promise<Album[]> {
         tags: []
       }));
 
+    const albumDir = songs[0]?.['Album Directory'] || '';
     return {
-      id: index + 1,
+      id: albumDir,
       title: albumTitle,
-      year: '2024', // Year not in CSV - will need to add this later
+      year: albumYearMap[albumTitle] || 'Unknown',
       coverArt: getAlbumImageUrl(albumTitle, 'full'),
       description: '',
       tracks
     };
   });
 
+  // Sort albums chronologically by release year
+  albums.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+
   return albums;
 }
 
 export async function getAlbumById(id: string | number | undefined): Promise<Album | undefined> {
   if (!id) return undefined;
-  
+
   const albums = await getAllAlbums();
-  const numId = typeof id === 'string' ? parseInt(id, 10) : id;
-  return albums.find(album => album.id === numId);
+  return albums.find(album => String(album.id) === String(id));
 }
 
 export async function getAllSongs(): Promise<Song[]> {
@@ -290,19 +262,6 @@ export async function getSongBySlug(slug: string): Promise<ProcessedSong | undef
   }
 }
 
-export async function getRelatedSongs(currentSong: Song, limit: number = 3): Promise<Song[]> {
-  const allSongs = await getAllSongs();
-  return allSongs
-    .filter(song => 
-      song.albumId === currentSong.albumId && 
-      song.id !== currentSong.id
-    )
-    .slice(0, limit);
-}
-
-export function getSafeHtml(content: string | undefined): string {
-  return content || '';
-}
 
 export async function getNavigationData(currentSong: Song): Promise<{
   previous?: Song;
@@ -346,7 +305,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
 
   // Find previous song with lyrics
   for (let i = currentIdx - 1; i >= 0; i--) {
-    if (albumSongs[i].hasLyrics === 'TRUE' || albumSongs[i].hasLyrics === 'Yes') {
+    if (albumSongs[i].hasLyrics === 'Yes' || albumSongs[i].hasLyrics === 'TRUE') {
       previous = albumSongs[i];
       break;
     }
@@ -354,7 +313,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
 
   // Find next song with lyrics
   for (let i = currentIdx + 1; i < albumSongs.length; i++) {
-    if (albumSongs[i].hasLyrics === 'TRUE' || albumSongs[i].hasLyrics === 'Yes') {
+    if (albumSongs[i].hasLyrics === 'Yes' || albumSongs[i].hasLyrics === 'TRUE') {
       next = albumSongs[i];
       break;
     }
@@ -363,7 +322,7 @@ export async function getNavigationData(currentSong: Song): Promise<{
   return {
     previous,
     next,
-    albumSongs: albumSongs.filter(song => song.hasLyrics === 'TRUE' || song.hasLyrics === 'Yes'),
+    albumSongs: albumSongs.filter(song => song.hasLyrics === 'Yes' || song.hasLyrics === 'TRUE'),
     currentIndex: currentIdx
   };
 }

@@ -1,53 +1,54 @@
-import { getAllAlbums } from '@/lib/utils/markdown';
-import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RetroCard } from '@/components/ui/RetroCard';
-import type { Album } from '@/types';
+import WFCard from '@/components/ui/WFCard';
+import { AlbumCover } from '@/components/ui/AlbumCover';
+import { getAllAlbums } from '@/lib/utils/markdown';
 
-const AlbumGridItem = dynamic<{ album: Album }>(() => import('@/components/albums/AlbumGridItem'));
-const FeaturedAlbum = dynamic<{ album: Album }>(() => import('@/components/albums/FeaturedAlbum'));
+export const metadata: Metadata = {
+  title: 'Albums',
+  description: 'Browse all WookieFoot albums — 8 albums spanning 21 years of music.',
+};
+
+export const dynamic = 'force-dynamic';
 
 export default async function AlbumsPage() {
   const albums = await getAllAlbums();
 
   return (
-    <div className="space-y-12">
-      {/* Header */}
-      <RetroCard variant="primary" className="p-8 hover-lift">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            <span className="text-retro-paper cosmic-glow">WookieFoot</span>
-            <span className="text-gradient block mt-2">Albums</span>
-          </h1>
-          <p className="text-lg text-retro-paper/80 max-w-2xl mx-auto">
-            Explore the complete discography of WookieFoot. Click on an album to view
-            its lyrics and details.
-          </p>
-        </div>
-      </RetroCard>
-
-      {/* Albums Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {albums.map((album) => (
-          <AlbumGridItem key={album.id} album={album} />
-        ))}
+    <div className="space-y-10">
+      {/* Page Header */}
+      <div className="text-center">
+        <h1 className="font-display text-4xl text-text-primary">Albums</h1>
+        <p className="text-text-secondary mt-2">
+          8 albums spanning over 20 years of music
+        </p>
       </div>
 
-      {/* Featured Album */}
-      {albums.length > 0 && <FeaturedAlbum album={albums[0]} />}
-
-      {/* Call to Action */}
-      <RetroCard variant="secondary" className="p-6 text-center hover-lift">
-        <p className="text-retro-paper/80">
-          Can't find what you're looking for?{' '}
-          <Link
-            href="/search"
-            className="text-accent-green hover:text-accent-orange transition-colors duration-300 font-semibold"
-          >
-            Try searching our complete lyrics archive
+      {/* Albums Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {albums.map((album) => (
+          <Link key={album.id} href={`/albums/${album.id}`}>
+            <WFCard className="h-full hover:shadow-card-hover transition-shadow duration-200">
+              <div className="space-y-3">
+                <AlbumCover
+                  src={album.coverArt}
+                  albumTitle={album.title}
+                  size="md"
+                />
+                <div>
+                  <h2 className="font-display text-lg text-text-primary">
+                    {album.title}
+                  </h2>
+                  <p className="text-accent-secondary text-sm">{album.year}</p>
+                  <p className="text-text-muted text-sm">
+                    {album.tracks?.length || 0} tracks
+                  </p>
+                </div>
+              </div>
+            </WFCard>
           </Link>
-        </p>
-      </RetroCard>
+        ))}
+      </div>
     </div>
   );
 }

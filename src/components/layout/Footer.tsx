@@ -13,6 +13,14 @@ export default function Footer() {
         {/* External Links */}
         <div className="flex justify-center space-x-6 mb-6">
           <a
+            href="https://www.wookiefoot.com"
+            className="text-[#6B5E4F] hover:text-accent-secondary transition-colors text-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WookieFoot.com
+          </a>
+          <a
             href="https://www.youtube.com/@wookiefootmark"
             className="text-[#6B5E4F] hover:text-accent-secondary transition-colors text-sm"
             target="_blank"

@@ -1,45 +1,36 @@
 # WookieFoot Website Infrastructure
 
 ## Domain Configuration
-- Domain: wookiefoot.com
-- DNS Management: Cloudflare
-- SSL/TLS: Managed through Cloudflare
+- **Live URL:** https://wookiefoot.kroeker.fun
+- DNS Management: Cloudflare (kroeker.fun zone)
+- SSL/TLS: Managed through Cloudflare tunnel
 
 ## Deployment Architecture
 
 ### Server Infrastructure
-- Self-hosted server
-- Docker containerization
-- Cloudflare tunnel for frontend access and security
+- **Production server:** 10.10.10.30 (Proxmox LXC, Ubuntu 22.04)
+- **Staging port:** 4001
+- **Node.js:** v20 LTS via fnm (user: docker)
+- **Cloudflare tunnel:** Token-managed, routes wookiefoot.kroeker.fun → localhost:4001
 
-### Docker Configuration
-```dockerfile
-# TO BE IMPLEMENTED
-# Will include:
-# - Node.js runtime
-# - Next.js application
-# - Web server (TBD)
-# - Environment configurations
+### Deploy Commands
+```bash
+# Deploy to staging (builds locally, syncs to server, restarts)
+./scripts/deploy-staging.sh
+
+# Manual restart on server
+ssh docker@10.10.10.30
+export PATH="$HOME/.local/share/fnm:$PATH" && eval "$(fnm env)" && fnm use 20
+cd /home/docker/wookiefoot-staging
+API_PORT=4001 ./node_modules/.bin/next start -p 4001
+
+# View logs
+ssh docker@10.10.10.30 'tail -f /home/docker/wookiefoot-staging.log'
 ```
 
-### Cloudflare Tunnel Setup
-- Secure connection between Cloudflare's network and our web server
-- No need for public IP or opening ports
-- Enhanced security through Cloudflare's protection
-
-## Deployment Process
-
-### Container Management
-1. Docker image build process
-2. Container orchestration
-3. Resource allocation
-4. Health monitoring
-
-### CI/CD Pipeline (To Be Implemented)
-- Automated builds
-- Testing procedures
-- Deployment stages
-- Rollback procedures
+### Important: API_PORT
+The `API_PORT` env var MUST match the port Next.js runs on. The data layer self-fetches
+`localhost:API_PORT/api/lyrics` — if this doesn't match, pages crash with ECONNREFUSED.
 
 ## Infrastructure Components
 

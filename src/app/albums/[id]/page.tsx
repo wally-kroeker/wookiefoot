@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${album.title} | WookieFoot Lyrics`,
+    title: album.title,
     description: album.description || `Browse all tracks from ${album.title} by WookieFoot.`,
   };
 }
@@ -51,6 +51,19 @@ export default async function AlbumPage({ params }: PageProps) {
 
   return (
     <div className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MusicAlbum',
+            name: album.title,
+            byArtist: { '@type': 'MusicGroup', name: 'WookieFoot' },
+            numTracks: album.tracks?.length || 0,
+            datePublished: album.year,
+          }),
+        }}
+      />
       {/* Back Navigation */}
       <Link
         href="/albums"

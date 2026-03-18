@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${song.title} | WookieFoot Lyrics`,
+    title: song.title,
     description: song.description || `Lyrics for ${song.title} by WookieFoot`,
   };
 }
@@ -60,6 +60,18 @@ export default async function SongPage({ params }: PageProps) {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MusicComposition',
+            name: song.title,
+            composer: { '@type': 'MusicGroup', name: 'WookieFoot' },
+            lyrics: { '@type': 'CreativeWork', text: song.content?.replace(/<[^>]*>/g, '') || '' },
+          }),
+        }}
+      />
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-text-muted font-body">
         <Link href="/" className="hover:text-accent-primary transition-colors duration-200">

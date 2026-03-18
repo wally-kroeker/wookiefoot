@@ -15,21 +15,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((s: any) => s['Has Lyrics'] === 'TRUE')
     .map((s: any) => ({
       url: `${baseUrl}/lyrics/${s['Song Slug']}`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-03-17'),
       priority: 0.7 as const,
     }));
 
   const albumUrls = albumDirs.map((dir: string) => ({
     url: `${baseUrl}/albums/${dir}`,
-    lastModified: new Date(),
+    lastModified: new Date('2026-03-17'),
     priority: 0.8 as const,
   }));
 
   return [
-    { url: baseUrl, lastModified: new Date(), priority: 1.0 },
-    { url: `${baseUrl}/albums`, lastModified: new Date(), priority: 0.9 },
-    { url: `${baseUrl}/search`, lastModified: new Date(), priority: 0.5 },
-    { url: `${baseUrl}/community`, lastModified: new Date(), priority: 0.5 },
+    { url: baseUrl, lastModified: new Date('2026-03-17'), priority: 1.0 },
+    { url: `${baseUrl}/albums`, lastModified: new Date('2026-03-17'), priority: 0.9 },
+    { url: `${baseUrl}/search`, lastModified: new Date('2026-03-17'), priority: 0.5 },
+    { url: `${baseUrl}/community`, lastModified: new Date('2026-03-17'), priority: 0.5 },
     ...albumUrls,
     ...songUrls,
   ];

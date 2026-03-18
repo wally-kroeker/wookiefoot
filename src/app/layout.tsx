@@ -27,6 +27,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://wookiefoot.kroeker.fun'),
   title: {
     default: 'WookieFoot Lyrics',
     template: '%s | WookieFoot Lyrics',
@@ -41,6 +42,14 @@ export const metadata: Metadata = {
     siteName: 'WookieFoot Lyrics',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/hero-wookiefoot.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'WookieFoot Lyrics',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -50,6 +59,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: './',
   },
 };
 

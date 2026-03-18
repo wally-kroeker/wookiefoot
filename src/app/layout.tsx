@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'WookieFoot Lyrics',
     description: 'Explore lyrics, albums, and music from WookieFoot',
-    url: 'https://wookiefoot.com',
+    url: 'https://wookiefoot.kroeker.fun',
     siteName: 'WookieFoot Lyrics',
     locale: 'en_US',
     type: 'website',
@@ -74,6 +74,11 @@ export default function RootLayout({
               })();
             `,
           }}
+        />
+<script
+          defer
+          src="https://umami.kroeker.fun/script.js"
+          data-website-id="c4743cb8-75c2-44ba-92c9-dcf005d624cb"
         />
       </head>
       <body className="font-body min-h-screen flex flex-col bg-bg-primary text-text-primary">

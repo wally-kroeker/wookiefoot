@@ -103,33 +103,23 @@ EOF
 }
 
 start_staging_server() {
-    log_step "Starting staging server on port $STAGING_PORT..."
+    log_step "Restarting wookiefoot.service on port $STAGING_PORT..."
 
     ssh -i "$SSH_KEY" "$PRODUCTION_SERVER" << EOF
-        # Kill existing staging process
-        pkill -f "wookiefoot-staging" 2>/dev/null || true
-        sleep 1
+        # systemd-managed (unit at /etc/systemd/system/wookiefoot.service)
+        # Passwordless via /etc/sudoers.d/docker-deploy-restart
+        sudo -n systemctl restart wookiefoot
 
-        export PATH="\$HOME/.local/share/fnm:\$PATH"
-        eval "\$(fnm env)"
-        fnm use 22
-
-        cd $STAGING_DIR
-
-        # Start Next.js in production mode
-        # API_PORT tells getBaseUrl() where to self-fetch
-        PORT=$STAGING_PORT API_PORT=$STAGING_PORT nohup npx next start -p $STAGING_PORT > /home/docker/wookiefoot-staging.log 2>&1 &
-        echo "wookiefoot-staging" > /dev/null  # tag for pkill
-
-        sleep 3
-        if curl -s -o /dev/null -w "%{http_code}" http://localhost:$STAGING_PORT | grep -q "200\|304"; then
-            echo "Staging server responding on port $STAGING_PORT"
+        sleep 4
+        if curl -s -o /dev/null -w "%{http_code}" http://localhost:$STAGING_PORT | grep -q "200\\|304"; then
+            echo "wookiefoot.service responding on port $STAGING_PORT"
         else
             echo "Warning: server may still be starting..."
+            systemctl status wookiefoot --no-pager -n 10 || true
         fi
 EOF
 
-    log_info "Staging server started on port $STAGING_PORT"
+    log_info "wookiefoot.service restarted on port $STAGING_PORT"
 }
 
 generate_summary() {
